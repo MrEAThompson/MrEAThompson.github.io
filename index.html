@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emmanuel Anu Thompson — Transportation & Supply Chain Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c2230; --muted:#5d6577; --navy:#1f3a5f; --navy-2:#15293f; --gold:#b8862f; --gold-soft:#f3e8d2;
+  --paper:#faf8f4; --card:#ffffff; --line:#e7e1d5; --ok:#2f7a4f; --err:#a33a3a;
+  --serif:'Fraunces', Georgia, serif; --sans:'Source Sans 3', system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6}
+a{color:var(--navy);text-decoration-color:rgba(31,58,95,.35);text-underline-offset:3px}
+a:hover{color:var(--gold)}
+h1,h2,h3,h4{font-family:var(--serif);color:var(--navy-2);line-height:1.2;margin:0 0 .5em}
+h2{font-size:1.9rem;font-weight:600}
+h3{font-size:1.25rem;font-weight:600}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Masthead */
+.masthead{background:var(--navy-2);color:#fff}
+.masthead .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:1.35rem;color:#fff;text-decoration:none;letter-spacing:.2px}
+.brand small{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#c9d3e2;margin-top:2px}
+nav.main{display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{color:#dfe6f0;text-decoration:none;padding:7px 12px;border-radius:4px;font-weight:500;font-size:.95rem}
+nav.main a:hover{background:rgba(255,255,255,.08);color:#fff}
+nav.main a.active{background:var(--gold);color:#fff}
+.goldbar{height:4px;background:linear-gradient(90deg,var(--gold),#d9b46a,var(--gold))}
+
+/* Hero */
+.hero{background:linear-gradient(180deg,#fff, var(--paper));border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;padding-top:48px;padding-bottom:44px}
+.photo{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:0 6px 24px rgba(21,41,63,.15);background:var(--navy);display:flex;align-items:center;justify-content:center}
+.photo .mono{font-family:var(--serif);color:#fff;font-size:4rem;letter-spacing:2px}
+.hero h1{font-size:2.6rem;font-weight:700;margin-bottom:.15em}
+.hero .role{font-size:1.1rem;color:var(--gold);font-weight:600;margin-bottom:.6em}
+.hero .tagline{font-size:1.12rem;color:var(--muted);max-width:640px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 14px;font-size:.9rem;text-decoration:none;color:var(--navy);font-weight:500}
+.pill:hover{border-color:var(--gold);color:var(--gold)}
+
+main{padding:44px 0 60px}
+.section{margin-bottom:48px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--navy);padding-bottom:6px;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.section-head h2{margin:0}
+.section-head .aside{color:var(--muted);font-size:.9rem}
+.lead p{margin:0 0 1em}
+
+.two{display:grid;grid-template-columns:1.6fr 1fr;gap:40px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 36px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;text-align:center}
+.stat b{display:block;font-family:var(--serif);font-size:2rem;color:var(--navy)}
+.stat span{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* Feature blocks like the reference: heading + thumbnail + read more */
+.features{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.feature{display:grid;grid-template-columns:96px 1fr;gap:18px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px;align-items:start;transition:box-shadow .2s, transform .2s}
+.feature:hover{box-shadow:0 8px 24px rgba(21,41,63,.08);transform:translateY(-2px)}
+.feature .thumb{width:96px;height:96px;border-radius:6px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center}
+.feature h3{margin-bottom:.3em}
+.feature p{margin:0 0 .5em;color:var(--muted);font-size:.95rem}
+.more{font-weight:600;text-decoration:none;color:var(--gold)}
+.more:hover{text-decoration:underline}
+
+.news{list-style:none;padding:0;margin:0}
+.news li{padding:12px 0;border-bottom:1px dashed var(--line);font-size:.96rem}
+.news .date{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-weight:700}
+.sidebox{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:var(--gold-soft);color:#6d4f17;border-radius:4px;padding:3px 10px;font-size:.85rem;font-weight:500}
+
+/* Entries */
+.entry{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.entry:last-child{border-bottom:none}
+.entry .t{font-weight:700;color:var(--navy-2)}
+.entry .s{color:var(--muted);font-style:italic}
+.entry .d{color:var(--muted);font-size:.9rem;text-align:right;white-space:nowrap}
+.entry ul{grid-column:1/-1;margin:6px 0 0;padding-left:20px}
+.entry ul li{margin-bottom:3px}
+.meta{grid-column:1/-1;font-size:.88rem;color:var(--muted)}
+
+/* Publications */
+.pubtools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;align-items:center}
+.pubtools input{flex:1;min-width:200px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;font:inherit;font-size:.9rem;color:var(--navy)}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pub{display:grid;grid-template-columns:62px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.pub .lab{font-weight:700;color:var(--gold);font-size:.9rem;padding-top:2px}
+.pub .ti{font-weight:600;color:var(--navy-2)}
+.pub .au{font-size:.95rem}
+.pub .ve{font-style:italic;color:var(--muted);font-size:.95rem}
+.pub .lk{font-size:.85rem;margin-top:2px}
+.yeargroup{font-family:var(--serif);font-size:1.3rem;color:var(--navy);margin:24px 0 2px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.skill{padding:10px 0;border-bottom:1px solid var(--line)}
+.skill b{color:var(--navy-2)}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:28px;max-width:640px}
+.contact-card dt{font-weight:700;color:var(--navy);margin-top:12px}
+.contact-card dd{margin:0}
+
+footer{background:var(--navy-2);color:#c9d3e2;padding:28px 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer a{color:#e6ecf4;text-decoration:none;margin-right:14px}
+footer a:hover{color:var(--gold)}
+.hidden{display:none!important}
+
+/* Forms / admin */
+input,textarea,select{font:inherit;font-size:.95rem;border:1px solid #d6cfc0;border-radius:6px;padding:8px 10px;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+label.f{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.05em}
+.btn{font:inherit;font-weight:600;font-size:.92rem;border-radius:6px;padding:8px 16px;border:1px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer}
+.btn:hover{background:var(--navy-2)}
+.btn.ghost{background:#fff;color:var(--navy)}
+.btn.ghost:hover{background:#f1efe9}
+.btn.gold{background:var(--gold);border-color:var(--gold)}
+.btn.danger{background:#fff;color:var(--err);border-color:#e3c4c4}
+.btn.sm{padding:4px 10px;font-size:.82rem}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.admin{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px}
+.admin>*,.row2>*,.item-head .ttl{min-width:0}
+.admin-nav{position:sticky;top:16px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px}
+.admin-nav button{display:block;width:100%;text-align:left;border:none;background:none;font:inherit;padding:8px 10px;border-radius:5px;cursor:pointer;color:var(--ink)}
+.admin-nav button:hover{background:#f4f1ea}
+.admin-nav button.on{background:var(--navy);color:#fff}
+.admin-nav .count{float:right;font-size:.8rem;opacity:.7}
+.panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px}
+.item{border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-bottom:12px;background:#fdfcf9}
+.item-head{display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:pointer}
+.item-head .ttl{font-weight:600;color:var(--navy-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item-head .acts{display:flex;gap:6px;flex-shrink:0}
+.item-body{margin-top:8px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.savebar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--gold-soft);border:1px solid #e6d3ad;border-radius:8px;padding:10px 16px;margin-bottom:20px;flex-wrap:wrap}
+.status{font-size:.9rem;font-weight:600}
+.status.ok{color:var(--ok)} .status.err{color:var(--err)} .status.dirty{color:#8a5a00}
+.notice{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:6px;padding:16px 20px;margin-bottom:20px}
+.modal-bg{position:fixed;inset:0;background:rgba(15,25,40,.5);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px}
+.modal{background:#fff;border-radius:10px;padding:24px;max-width:640px;width:100%;max-height:90vh;overflow:auto}
+.photo-edit{display:flex;gap:18px;align-items:center}
+.photo-edit .photo{width:110px;height:110px;border-width:3px}
+.photo-edit .photo .mono{font-size:2rem}
+
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .pills{justify-content:center}
+  .two,.grid2,.features,.admin{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .entry{grid-template-columns:1fr}.entry .d{text-align:left}
+  .row2{grid-template-columns:1fr}
+  .admin-nav{position:static}
+  .hero h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="#home" id="brandName">Emmanuel Anu Thompson<small>Transportation · Supply Chain · Logistics</small></a>
+    <nav class="main" id="mainNav"></nav>
+  </div>
+</header>
+<div class="goldbar"></div>
+
+<div id="app"></div>
+
+<footer>
+  <div class="wrap">
+    <div id="footNav"></div>
+    <div><span id="copy"></span> · <a href="#admin" style="margin:0">Admin</a></div>
+  </div>
+</footer>
+
+<script>
+/* ===================== DEFAULT CONTENT (from CV) ===================== */
+const DEFAULT = {
+  profile:{
+    name:"Emmanuel Anu Thompson",
+    shortName:"EA Thompson",
+    role:"Ph.D. Candidate · Graduate Research Assistant",
+    affiliation:"Upper Great Plains Transportation Institute, North Dakota State University",
+    tagline:"Transportation and supply chain researcher building decision-support tools for autonomous freight, agricultural logistics, and resilient supply chains.",
+    credentials:"Six Sigma Green Belt · ITC Facilitator",
+    location:"Fargo, North Dakota, USA",
+    email:"emmanuel.a.thompson@ndsu.edu",
+    phone:"",
+    linkedin:"https://www.linkedin.com/in/mreathompson/",
+    orcid:"https://orcid.org/0000-0003-2723-6825",
+    scholar:"https://scholar.google.com/citations?hl=en&user=IChfMs0AAAAJ",
+    photo:"",
+    bio:"I am a Ph.D. candidate in Transportation and Supply Chain Management at North Dakota State University and a Graduate Research Assistant at the Upper Great Plains Transportation Institute (UGPTI), advised by Prof. Pan Lu.\n\nMy work sits where transportation research meets professional logistics practice. Before doctoral study I worked in freight forwarding, procurement, and logistics project management in China and Ghana. Today I develop decision-support solutions using multi-criteria decision-making, econometric modeling, machine learning, and geographic information systems.\n\nMy research spans autonomous freight systems, agricultural supply chains, transportation economics, supply chain resilience, digital logistics, and sustainable freight transportation.",
+    interests:"Autonomous truck systems, Agricultural supply chains, Supply chain resilience, Supply chain plasticity, Digital twin systems, Port competition, Freight logistics, Transportation economics, Sustainable freight transportation",
+    reviewing:"Ad hoc reviewer for Journal of Transport Geography; Transportation Research Part E: Logistics and Transportation Review; Engineering Applications of Artificial Intelligence; European Transport Research Review; and Case Studies on Transport Policy. Completed 13 verified peer reviews as of September 2026.",
+    languages:"English (Native), Akan/Twi (Native), Mandarin Chinese (Proficient)"
+  },
+  news:[
+    {date:"Oct 2026",text:"Grade-crossing harm concentration paper published online in Accident Analysis & Prevention."},
+    {date:"Fall 2026",text:"Four papers recommended for presentation at the 106th TRB Annual Meeting (January 2027)."},
+    {date:"2026",text:"Named Mancur Olson Graduate Fellow, Challey Institute (2026–2027)."},
+    {date:"2026",text:"Autonomous truck decision-support system published in the Journal of Business Logistics."},
+    {date:"Jun 2026",text:"Appointed Young Member of TRB Standing Committee AT012 on Freight and Logistics Planning and Modeling."}
+  ],
+  education:[
+    {degree:"Ph.D. in Transportation and Supply Chain Management",institution:"North Dakota State University (NDSU)",location:"Fargo, ND, USA",dates:"Aug. 2024 – May 2028 (Expected)",details:"Advisor: Prof. Pan Lu, UGPTI Center Director\nResearch focus: Autonomous trucking policy, supply chain resilience, digital supply chain"},
+    {degree:"M.Eng. in Transport Planning and Management",institution:"Shanghai Maritime University",location:"Shanghai, China",dates:"Sep. 2019 – Jun. 2022",details:"Research focus: Freight transportation, railway management, port connectivity"},
+    {degree:"B.Sc. in Logistics Management",institution:"Regional Maritime University",location:"Accra, Ghana",dates:"Sep. 2015 – Jun. 2019",details:"Research focus: Warehouse management, port connectivity, logistics modeling"}
+  ],
+  teaching:[
+    {role:"Doctoral-Level Instructional Sessions — Research Methods (Graduate)",institution:"North Dakota State University",dates:"Fall 2026",details:"Teach selected Ph.D.-level research methods topics: responsible use of AI in academic research and writing; transportation and assignment optimization problems; and supply chain theories.\nDeliver instruction on research modeling in R and Python and on manuscript preparation, journal submission, and peer review."},
+    {role:"Teaching Assistant — SCM 116: Business Software Applications (Undergraduate)",institution:"North Dakota State University",dates:"Fall 2026",details:"Support undergraduate instruction and applied coursework in business software applications, including Microsoft Excel assignments.\nAssist students with assignments and software-based activities through virtual office hours and individual guidance."}
+  ],
+  experience:[
+    {role:"Graduate Research Assistant",org:"Upper Great Plains Transportation Institute, NDSU",location:"Fargo, ND, USA",dates:"Aug. 2024 – Present",details:"Conduct research on autonomous freight systems, agricultural logistics, transportation economics, sustainability policy, and decision-support systems.\nDevelop quantitative models using econometrics, machine learning, fuzzy multi-criteria decision-making, and GIS.\nSupport federally funded projects through data analysis, stakeholder engagement, manuscript preparation, and technical reporting."},
+    {role:"Project Manager & Logistics Lead",org:"Adaptive Leadership",location:"Shanghai, China",dates:"Jan. 2020 – Jul. 2024",details:"Conducted factory auditing and managed international freight forwarding operations.\nLed market research, lead generation, and procurement strategy for multiple client projects.\nManaged coaching projects, coordinated team deliverables, and facilitated organizational workshops.\nOversaw accounting, invoicing, and financial reporting for project operations."},
+    {role:"Procurement Intern & Logistics Personnel",org:"Ghana National Petroleum Corporation (GNPC)",location:"Accra, Ghana",dates:"Jun. 2017 – Aug. 2019",details:"Prepared tender documentation and Requests for Quotation (RFQs).\nHandled Payment of Voucher (POV) preparation and supported accounts payable.\nManaged store inventory and supported logistics coordination for operational supplies."}
+  ],
+  projects:[
+    {title:"Autonomous Truck Adoption in Rural Agricultural Communities",sponsor:"CMMM, U.S. Department of Transportation",dates:"Feb. 2026 – Present",methods:"Fuzzy AHP, FCB-FCM, Expert Survey, R, LaTeX, Multi-Stakeholder Analysis",details:"Designed multi-stakeholder expert surveys for truck drivers, technology providers, government agencies, logistics specialists, and academics.\nApplied a Fuzzy Cognitive Behavioral–Fuzzy AHP (FCB-FAHP) methodology to model causal links between adoption drivers and barriers.\nDeveloped a Fuzzy Cognitive Mapping–based weighting scheme to prioritize the transformational dynamics of autonomous truck deployment.\nFindings published in the Journal of Business Logistics (2026, 47(4), e70097)."},
+    {title:"Hazardous Materials (HazMat) Freight Risk & Resilience Analysis",sponsor:"CMMM, U.S. Department of Transportation",dates:"May 2025 – Dec. 2025",methods:"GIS, Risk Assessment, Spatial Analysis, Policy Frameworks",details:"Investigated hazardous materials transportation risks across North Dakota's rural freight network.\nConducted spatial analysis of HazMat incident hotspots and evaluated regulatory policy effectiveness.\nIntegrated a multi-level perspective (MLP) framework to assess transition dynamics in HazMat logistics."},
+    {title:"Greenhouse Gas Emissions from Mobile Device Location Data",sponsor:"CMMM, U.S. Department of Transportation",dates:"Aug. 2024 – Feb. 2025",methods:"R, FRED API, ArcGIS, Quantile Regression, IV (2SLS), Log-Linear Modeling",details:"Built a multi-layered econometric framework (seasonal log-linear, quantile regression, IV) to estimate gasoline price elasticity of VMT at census-tract level in the Washington, D.C. metro area.\nImplemented 2SLS estimation with exogenous instruments (station density, crude oil prices, state tax rates).\nAnalyzed urban–rural distributional heterogeneity and seasonal differences in price responsiveness."}
+  ],
+  publications:[
+    {type:"journal",authors:"Thompson, E. A., Lu, P., Yang, X., Jones, R., & Tolliver, D.",year:"2026",title:"A decision-support system for prioritizing the transformational dynamics of autonomous trucks deployment",venue:"Journal of Business Logistics, 47(4), e70097",doi:"10.1111/jbl.70097"},
+    {type:"journal",authors:"Akpakia, C. L. A., Tetteh, O. A., Thompson, E. A., Guo, H., & Jinyu, W.",year:"2026",title:"Concentration of injury and fatality harm at repeat-active highway–rail grade crossings: A multi-state permutation and machine learning analysis",venue:"Accident Analysis & Prevention, 239, 108824 (2027; online Oct. 14, 2026)",doi:"10.1016/j.aap.2026.108824"},
+    {type:"journal",authors:"Yang, X., Afrin, T., Thompson, E. A., Yodo, N., Lu, P., & Oduor, P.",year:"2026",title:"A data-driven approach to understanding hazardous material spill infiltration: From statistical insights to a case study from a rail accident scenario",venue:"Process Safety and Environmental Protection, 216, 109217",doi:"10.1016/j.psep.2026.109217"},
+    {type:"journal",authors:"Thompson, E. A., Boadu, S., Badshah, I., Tetteh, B. K., Akoto, E. T., Abudu, R., Lu, P., & Motuba, D.",year:"2026",title:"Towards container terminal automation: A fuzzy decision-support framework for prioritising digital twin adoption determinants",venue:"Australian Journal of Maritime & Ocean Affairs, 1–30",doi:"10.1080/18366503.2026.2705740"},
+    {type:"journal",authors:"Boadu, S., Thompson, E. A., Godavarthy, R., Akoto, E. T., Dadson, K., & Atuobi, H. B.",year:"2026",title:"Internet of Things in rural agricultural freight transportation: A case study of North Dakota State",venue:"Transportation Research Part E: Logistics and Transportation Review, 214, 104929",doi:"10.1016/j.tre.2026.104929"},
+    {type:"journal",authors:"Thompson, E. A., Motuba, D., Lu, P., Agyeman, S., & Akoto, E. T.",year:"2026",title:"Inclusive urban transport in Ghana: Bridging informal transport systems and national policy",venue:"African Transport Studies, 4, 100106",doi:"10.1016/j.aftran.2026.100106"},
+    {type:"journal",authors:"Thompson, E. A., Boadu, S., Akoto, E. T., Motuba, D., & Lu, P.",year:"2026",title:"Toward freight mobility-as-a-service through digital freight platforms and multimodal operations",venue:"Transportation Research Today, 1, 100022",doi:"10.1016/j.trt.2026.100022"},
+    {type:"journal",authors:"Domfeh, S. A., Ofori-Addai, G., & Thompson, E. A.",year:"2026",title:"An analytical study of hinterland transport inefficiencies on supply chain performance",venue:"Transportation Research Record: Journal of the Transportation Research Board. Advance online publication",doi:"10.1177/03611981261464608"},
+    {type:"journal",authors:"Thompson, E. A., Yang, X., Lu, P., Bridgelall, R., & Tolliver, D.",year:"2026",title:"A decision support framework of cybersecurity strategies for resilient deployment of autonomous trucks",venue:"Journal of Transportation Security, 19, 26",doi:"10.1007/s12198-026-00348-9"},
+    {type:"journal",authors:"Thompson, E. A., Motuba, D., Lu, P., Alimo, P. K., Tetteh, B. K., Ofori-Addai, G., Abudu, R., Boadu, S., & Agyemang-Duah, A. T.",year:"2026",title:"Decision-support systems in container terminal automation: A systematic review of digital twin–expert system integration",venue:"Australian Journal of Maritime & Ocean Affairs, 1–32",doi:"10.1080/18366503.2026.2646718"},
+    {type:"journal",authors:"Thompson, E. A., Lu, P., Tolliver, D., & Jones, R.",year:"2026",title:"Economic analysis of autonomous truck technology: Cost implications and operational benefits",venue:"Transportation Planning and Technology, 1–19",doi:"10.1080/03081060.2026.2636745"},
+    {type:"journal",authors:"Thompson, E. A., Mattson, J., Lu, P., Akoto, E. T., Boadu, S., Atuobi, H. B., Dadson, K., & Tolliver, D.",year:"2025",title:"How can autonomous truck systems transform North Dakota's agricultural supply chain industry?",venue:"Future Transportation, 5(3), 100",doi:"10.3390/futuretransp5030100"},
+    {type:"journal",authors:"Thompson, E. A., & Lu, P.",year:"2025",title:"Determinants of rail freight transportation impact on port competition in West Africa",venue:"Journal of Transport Geography, 127, 104286",doi:"10.1016/j.jtrangeo.2025.104286"},
+    {type:"journal",authors:"Thompson, E. A., Lu, P., Alimo, P. K., Atuobi, H. B., Akoto, E. T., & Abbew, C. K.",year:"2025",title:"Revolutionizing railway systems: A systematic review of digital twin technologies",venue:"High-Speed Railway, 3(3), 238–250",doi:"10.1016/j.hspr.2025.05.005"},
+    {type:"journal",authors:"Abudu, R., Thompson, E. A., Dzawu, F. S., & Roa-Henriquez, A.",year:"2025",title:"A meta-analysis assessment of adaptive and transformative approaches to supply chain resilience",venue:"Supply Chain Analytics, 10, 100124",doi:"10.1016/j.sca.2025.100124"},
+    {type:"journal",authors:"Badshah, I., Bridgelall, R., & Thompson, E. A.",year:"2025",title:"GIS-enabled truck–drone hybrid systems for agricultural last-mile delivery: A multidisciplinary review with insights from a rural region",venue:"Drones, 9(12), 868",doi:"10.3390/drones9120868"},
+    {type:"journal",authors:"Boadu, S., Thompson, E. A., Godavarthy, R., Boateng, A., & Penneigh, R.",year:"2025",title:"A decade of smart port concept: A comprehensive review of past, present, and future implications",venue:"Australian Journal of Maritime & Ocean Affairs, 1–27",doi:"10.1080/18366503.2025.2546729"},
+    {type:"journal",authors:"Thompson, E. A., Akoto, E. T., Atuobi, H. B., Lu, P., & Abbew, C. K.",year:"2025",title:"Synergizing urban mobility: The interplay between autonomous vehicles and autonomous parking spaces for sustainable development",venue:"Journal of Transportation Technologies, 15(1), 50–59",doi:"10.4236/jtts.2025.151003"},
+    {type:"journal",authors:"Thompson, E. A., Lu, P., Zhao, G., Cirillo, C., & Akoto, E. T.",year:"2025",title:"Seasonal variations in travel demand elasticity in response to gasoline price changes",venue:"Open Journal of Business and Management, 13, 1418–1434",doi:"10.4236/ojbm.2025.132074"},
+    {type:"journal",authors:"Thompson, E. A., et al.",year:"2024",title:"Towards sustainable freight transportation in Africa: Complementarity of the fuzzy Delphi and best-worst methods",venue:"Sustainable Futures, 8, 100371",doi:"10.1016/j.sftr.2024.100371"},
+    {type:"journal",authors:"Thompson, E. A., Abudu, R., & Zheng, S.",year:"2022",title:"Empirical analysis of multiple-criteria decision-making process for freight transportation mode selection",venue:"Journal of Transportation Technologies, 12(1), 28–41",doi:"10.4236/jtts.2022.121002"},
+    {type:"journal",authors:"Abudu, R., Zheng, S., & Thompson, E. A.",year:"2021",title:"Port adaptation and efficiency: An empirical study of Ghanaian ports",venue:"International Journal of Regional Development, 8(2), 36",doi:"10.5296/ijrd.v8i2.18942"},
+    {type:"conference",authors:"Thompson, E. A., Lu, P., & Tolliver, D.",year:"2026",title:"A decision support framework of cybersecurity strategies for resilient deployment of autonomous trucks",venue:"Student podium presentation, 67th International Meeting of the Transportation Research Forum (April 2026)",doi:""},
+    {type:"conference",authors:"Thompson, E. A., Motuba, D., & Lu, P.",year:"2026",title:"Freight mobility-as-a-service: A systematic review and integrated framework for platform-based freight logistics",venue:"Student podium presentation, 67th International Meeting of the Transportation Research Forum (April 2026)",doi:""},
+    {type:"conference",authors:"Afrin, T., Yang, X., Thompson, E. A., Yodo, N., Lu, P., & Oduor, P.",year:"2026",title:"AI-based prediction of HazMat spill diffusion area and infiltration depth using laboratory-controlled data",venue:"105th Annual Meeting of the Transportation Research Board, Washington, D.C. (Jan. 12, 2026). TRBAM-26-02980",doi:""},
+    {type:"conference",authors:"Yang, X., Afrin, T., Thompson, E. A., Yodo, N., Lu, P., & Oduor, P.",year:"2026",title:"Exploring statistical relationships in HazMat infiltration depth: A correlation-based framework with scenario analysis using a real-world rail accident baseline",venue:"105th Annual Meeting of the Transportation Research Board, Washington, D.C. (Jan. 13, 2026). TRBAM-26-03579",doi:""},
+    {type:"conference",authors:"Thompson, E. A., & Lu, P.",year:"2026",title:"Towards container terminal automation: Assessing the determinants of digital twin technology",venue:"Poster, 105th Annual Meeting of the Transportation Research Board, Washington, D.C. (Jan. 2026)",doi:""},
+    {type:"conference",authors:"Thompson, E. A., & Lu, P.",year:"2025",title:"How can autonomous truck systems transform North Dakota's agricultural supply chain industry",venue:"Poster, 2025 Autonomous Trucking Conference: Evolution of Autonomous Trucking in North Dakota and the Northern Plains, Grand Forks, ND (Aug. 2025)",doi:""},
+    {type:"conference",authors:"Thompson, E. A., & Lu, P.",year:"2025",title:"Analyzing the determinants of rail freight impact on port competition in West Africa",venue:"Poster, 104th Annual Meeting of the Transportation Research Board, Washington, D.C. (Jan. 2025)",doi:""},
+    {type:"upcoming",authors:"Thompson, E. A., Yang, X., & Lu, P.",year:"2027",title:"Multi-objective optimization of autonomous trucks leasing for rural operation: A case study of North Dakota",venue:"Recommended for presentation, 106th TRB Annual Meeting, Washington, D.C. Advanced for further assessment by the Transportation Research Record Editorial Board. TRBAM-27-00527",doi:""},
+    {type:"upcoming",authors:"Akoto, E. T., Thompson, E. A., Boadu, S., Dadson, K., & Atuobi, H. B.",year:"2027",title:"Sustainable logistics for agriculture: A systematic literature review of freight decarbonization in the Northern Great Plains",venue:"Recommended for presentation, 106th TRB Annual Meeting, Washington, D.C. TRBAM-27-05573",doi:""},
+    {type:"upcoming",authors:"Akoto, E. T., Asante, B., & Thompson, E. A.",year:"2027",title:"When networks stay open but transportation fails: Shock-specific resilience in United States freight and passenger services",venue:"Recommended for presentation, 106th TRB Annual Meeting, Washington, D.C. TRBAM-27-05446",doi:""},
+    {type:"upcoming",authors:"Kumi, A., Thompson, E. A., Asante, B., & Boadu, S.",year:"2027",title:"Geographical crash injury disparities in North Dakota using a hybrid neural network multinomial logit model",venue:"Recommended for presentation, 106th TRB Annual Meeting, Washington, D.C. TRBAM-27-05338",doi:""},
+    {type:"review",authors:"Thompson, E. A., & Lu, P.",year:"",title:"Towards container terminal automation: A decision-support framework for digital twin application",venue:"Under first revision at Research in Transportation Business & Management",doi:""}
+  ],
+  presentations:[
+    {title:"Digital Twin for Logistics Fleet Management",host:"C.H. Robinson Supply Chain Team",date:"March 2026"},
+    {title:"Ghana Today: The Beauty and Essence of Going to Ghana",host:"NUGS-USA, Bison Chapter",date:"March 2026"}
+  ],
+  honors:[
+    {title:"Mancur Olson Graduate Fellow",org:"Challey Institute",dates:"2026 – 2027",note:""},
+    {title:"Best Research Award",org:"College of Business, North Dakota State University",dates:"2025 – 2026",note:""},
+    {title:"President",org:"Supply Chain Management Club, North Dakota State University",dates:"2026 – 2027",note:""},
+    {title:"Young Member",org:"Transportation Research Board (TRB)",dates:"Jun. 2026 – Apr. 2028",note:"AT012: Standing Technical Committee on Freight and Logistics Planning and Modeling"},
+    {title:"Community Volunteer",org:"Ruby's Pantry and New Life Center Thrift",dates:"200+ hours",note:""}
+  ],
+  certifications:[
+    {name:"Six Sigma Green Belt Certificate",issuer:"Institute of Industrial & Systems Engineers (IISE)",date:"Jan. 2026 (exp. Jan. 2029)"},
+    {name:"ITC Facilitator Certification",issuer:"Immunity to Change (ITC)",date:"2023"},
+    {name:"Customer Relationship Management (CRM)",issuer:"Professional Development",date:"2022"},
+    {name:"Microsoft Office Applications",issuer:"Microsoft",date:"2021"}
+  ],
+  memberships:[
+    {org:"Council of Supply Chain Management Professionals (CSCMP)",role:"Member",dates:"2026 – Present"},
+    {org:"Institute of Industrial & Systems Engineers (IISE)",role:"Member",dates:"2026 – Present"},
+    {org:"Transportation Research Forum (TRF)",role:"Member",dates:"2025 – Present"}
+  ],
+  skills:[
+    {category:"Quantitative Methods",items:"Fuzzy AHP, Fuzzy Delphi, FCB-FCM, Fuzzy TOPSIS, BWM, CRITIC, MCDM, Econometrics, Quantile Regression, IV/2SLS, Log-Linear Modeling, GAM, LASSO"},
+    {category:"Programming & Statistical Software",items:"R (ggplot2, tidyverse, lavaan), Python, SPSS, Stata, SuperDecision, AnyLoc, Fuzzy Mind Mapping"},
+    {category:"GIS & Spatial Analysis",items:"ArcGIS, QGIS, Spatial Statistics, Freight Accessibility Mapping"},
+    {category:"Decision Support Systems",items:"Hybrid Fuzzy-Neural Networks, Ensemble Learning, Expert Systems, Digital Twin Frameworks"},
+    {category:"Research Skills",items:"Systematic Literature Review, Multi-Level Perspective (MLP), Survey Instrument Design, Multi-Stakeholder Analysis, Academic Writing & Peer Review"},
+    {category:"Document Preparation",items:"LaTeX (double-column, beamer, TikZ), Microsoft Office Suite"}
+  ]
+};
+
+/* ===================== ADMIN SCHEMA ===================== */
+const SCHEMA = {
+  news:{label:"News & Updates",title:i=>i.text,fields:[["date","Date"],["text","Update","textarea"]],blank:{date:"",text:""}},
+  education:{label:"Education",title:i=>i.degree,fields:[["degree","Degree"],["institution","Institution"],["location","Location"],["dates","Dates"],["details","Details (one point per line)","textarea"]],blank:{degree:"",institution:"",location:"",dates:"",details:""}},
+  teaching:{label:"Teaching",title:i=>i.role,fields:[["role","Role / Course"],["institution","Institution"],["dates","Term"],["details","Details (one point per line)","textarea"]],blank:{role:"",institution:"",dates:"",details:""}},
+  experience:{label:"Work Experience",title:i=>i.role+" — "+i.org,fields:[["role","Role"],["org","Organization"],["location","Location"],["dates","Dates"],["details","Details (one point per line)","textarea"]],blank:{role:"",org:"",location:"",dates:"",details:""}},
+  projects:{label:"Research Projects",title:i=>i.title,fields:[["title","Project title"],["sponsor","Sponsor / Funder"],["dates","Dates"],["methods","Methods & tools"],["details","Details (one point per line)","textarea"]],blank:{title:"",sponsor:"",dates:"",methods:"",details:""}},
+  publications:{label:"Publications",title:i=>(i.year?i.year+" · ":"")+i.title,fields:[["type","Type","select",[["journal","Journal article"],["conference","Conference"],["upcoming","Upcoming conference"],["review","Under review"]]],["year","Year"],["title","Title"],["authors","Authors (your name is bolded automatically)"],["venue","Venue / Journal, volume, pages"],["doi","DOI (e.g. 10.1111/jbl.70097)"],["link","Other link (PDF, preprint)"]],blank:{type:"journal",year:"",title:"",authors:"Thompson, E. A., ",venue:"",doi:"",link:""}},
+  presentations:{label:"Invited Talks",title:i=>i.title,fields:[["title","Title"],["host","Host / Audience"],["date","Date"]],blank:{title:"",host:"",date:""}},
+  honors:{label:"Honors & Service",title:i=>i.title,fields:[["title","Title"],["org","Organization"],["dates","Dates"],["note","Note"]],blank:{title:"",org:"",dates:"",note:""}},
+  certifications:{label:"Certifications",title:i=>i.name,fields:[["name","Certification"],["issuer","Issuer"],["date","Date"]],blank:{name:"",issuer:"",date:""}},
+  memberships:{label:"Memberships",title:i=>i.org,fields:[["org","Organization"],["role","Role"],["dates","Dates"]],blank:{org:"",role:"",dates:""}},
+  skills:{label:"Skills",title:i=>i.category,fields:[["category","Category"],["items","Items (comma-separated)","textarea"]],blank:{category:"",items:""}}
+};
+const PROFILE_FIELDS = [
+  ["name","Full name"],["shortName","Short name"],["role","Role line"],["affiliation","Affiliation"],["credentials","Credentials line"],
+  ["tagline","Tagline (one sentence under your name)","textarea"],["bio","Biography (blank line between paragraphs)","textarea",8],
+  ["interests","Research interests (comma-separated)","textarea"],["reviewing","Peer review service","textarea"],["languages","Languages"],
+  ["location","Location"],["email","Email"],["phone","Phone (leave blank to hide)"],["linkedin","LinkedIn URL"],["orcid","ORCID URL"],["scholar","Google Scholar URL"]
+];
+
+/* ===================== STATE ===================== */
+let data = clone(DEFAULT);
+let saved = JSON.stringify(data);
+let gh = null, isOwner = false, loadState = "loading";
+const LS_KEY="eat_site_admin";
+let adminTab = "profile", openItem = null, pubFilter = "all", pubQuery = "";
+
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function safeUrl(u){u=String(u||"").trim();return /^https?:\/\//i.test(u)?u:""}
+function lines(s){return String(s||"").split("\n").map(x=>x.trim()).filter(Boolean)}
+function boldMe(a){return esc(a).replace(/(Thompson,\s*E\.\s*A\.?)/g,"<strong>$1</strong>")}
+function dirty(){return JSON.stringify(data)!==saved}
+const $=s=>document.querySelector(s);
+
+/* ===================== ROUTING ===================== */
+const PAGES=[["home","Home"],["research","Research"],["publications","Publications"],["teaching","Teaching"],["cv","CV"],["contact","Contact"]];
+function route(){return (location.hash||"#home").slice(1)||"home"}
+function navHtml(cur){return PAGES.map(([k,l])=>`<a href="#${k}" class="${cur===k?"active":""}">${l}</a>`).join("")}
+
+function render(){
+  const r=route();
+  const p=data.profile;
+  $("#mainNav").innerHTML=navHtml(r);
+  $("#footNav").innerHTML=PAGES.map(([k,l])=>`<a href="#${k}">${l}</a>`).join("");
+  $("#copy").textContent="© "+new Date().getFullYear()+" "+(p.name||"");
+  $("#brandName").innerHTML=esc(p.name)+"<small>Transportation · Supply Chain · Logistics</small>";
+  const app=$("#app");
+  const views={home:viewHome,research:viewResearch,publications:viewPubs,teaching:viewTeaching,cv:viewCV,contact:viewContact,admin:viewAdmin};
+  app.innerHTML=(views[r]||viewHome)();
+  if(r==="publications") bindPubs();
+  if(r==="admin") bindAdmin();
+}
+window.addEventListener("hashchange",()=>{render();window.scrollTo(0,0)});
+
+/* ===================== VIEWER PAGES ===================== */
+function photoHtml(cls="photo"){
+  const p=data.profile;
+  if(p.photo && p.photo.startsWith("data:image/")) return `<img class="${cls}" src="${p.photo}" alt="${esc(p.name)}">`;
+  const ini=(p.name||"").split(/\s+/).filter(Boolean).map(w=>w[0]).slice(0,3).join("");
+  return `<div class="${cls}"><span class="mono">${esc(ini)}</span></div>`;
+}
+function linkPills(){
+  const p=data.profile, out=[];
+  if(p.email) out.push(`<a class="pill" href="mailto:${esc(p.email)}">✉ ${esc(p.email)}</a>`);
+  if(safeUrl(p.scholar)) out.push(`<a class="pill" href="${esc(p.scholar)}" target="_blank" rel="noopener">Google Scholar</a>`);
+  if(safeUrl(p.orcid)) out.push(`<a class="pill" href="${esc(p.orcid)}" target="_blank" rel="noopener">ORCID</a>`);
+  if(safeUrl(p.linkedin)) out.push(`<a class="pill" href="${esc(p.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`);
+  return out.join("");
+}
+function hero(){
+  const p=data.profile;
+  return `<section class="hero"><div class="wrap">
+    ${photoHtml()}
+    <div>
+      <h1>${esc(p.name)}</h1>
+      <div class="role">${esc(p.role)}${p.affiliation?` · ${esc(p.affiliation)}`:""}</div>
+      <div class="tagline">${esc(p.tagline)}</div>
+      <div class="pills">${linkPills()}</div>
+    </div></div></section>`;
+}
+const ICONS={
+  research:`<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#1f3a5f" stroke-width="2.2"><rect x="4" y="22" width="26" height="12" rx="2"/><path d="M30 26h7l5 5v3h-12z"/><circle cx="12" cy="36" r="4" fill="#faf8f4"/><circle cx="35" cy="36" r="4" fill="#faf8f4"/><path d="M10 14h18M10 9h12" stroke="#b8862f"/></svg>`,
+  publications:`<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#1f3a5f" stroke-width="2.2"><path d="M10 6h20l8 8v28H10z"/><path d="M30 6v8h8"/><path d="M16 22h16M16 28h16M16 34h10" stroke="#b8862f"/></svg>`,
+  teaching:`<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#1f3a5f" stroke-width="2.2"><path d="M4 18 24 9l20 9-20 9z"/><path d="M12 22v10c0 3 6 6 12 6s12-3 12-6V22" /><path d="M44 18v12" stroke="#b8862f"/></svg>`,
+  service:`<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#1f3a5f" stroke-width="2.2"><circle cx="24" cy="18" r="10"/><path d="M18 26l-4 16 10-5 10 5-4-16" stroke="#b8862f"/></svg>`
+};
+function viewHome(){
+  const p=data.profile, pubs=data.publications;
+  const nJ=pubs.filter(x=>x.type==="journal").length, nC=pubs.filter(x=>x.type==="conference"||x.type==="upcoming").length;
+  const bio=String(p.bio||"").split(/\n\s*\n/).map(x=>`<p>${esc(x.trim())}</p>`).join("");
+  const latestJ=pubs.find(x=>x.type==="journal");
+  return hero()+`<main><div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>${nJ}</b><span>Journal articles</span></div>
+      <div class="stat"><b>${nC}</b><span>Conference papers</span></div>
+      <div class="stat"><b>${data.projects.length}</b><span>Funded projects</span></div>
+      <div class="stat"><b>${(p.reviewing.match(/(\d+)\s+verified/)||[,"—"])[1]}</b><span>Peer reviews</span></div>
+    </div>
+    <div class="two">
+      <div class="section lead">
+        <div class="section-head"><h2>About</h2></div>
+        ${bio}
+        <div class="tags" style="margin-top:14px">${String(p.interests||"").split(",").map(t=>t.trim()).filter(Boolean).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+      </div>
+      <aside>
+        <div class="sidebox">
+          <h3>Latest news</h3>
+          <ul class="news">${data.news.slice(0,6).map(n=>`<li><span class="date">${esc(n.date)}</span>${esc(n.text)}</li>`).join("")||"<li>No updates yet.</li>"}</ul>
+        </div>
+      </aside>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2>Explore</h2></div>
+      <div class="features">
+        <div class="feature"><div class="thumb">${ICONS.research}</div><div><h3>Research</h3><p>USDOT-funded work on autonomous truck adoption, HazMat freight risk, and travel demand econometrics.</p><a class="more" href="#research">read more →</a></div></div>
+        <div class="feature"><div class="thumb">${ICONS.publications}</div><div><h3>Publications</h3><p>${latestJ?`Latest: <em>${esc(latestJ.title)}</em>`:"Journal articles, conference papers, and work under review."}</p><a class="more" href="#publications">read more →</a></div></div>
+        <div class="feature"><div class="thumb">${ICONS.teaching}</div><div><h3>Teaching</h3><p>Doctoral research-methods instruction and undergraduate business software support at NDSU.</p><a class="more" href="#teaching">read more →</a></div></div>
+        <div class="feature"><div class="thumb">${ICONS.service}</div><div><h3>Honors & Service</h3><p>Fellowships, awards, TRB committee membership, peer review, and community service.</p><a class="more" href="#cv">read more →</a></div></div>
+      </div>
+    </div>
+  </div></main>`;
+}
+function entry(t,s,d,details,meta){
+  const li=lines(details);
+  return `<div class="entry"><div><div class="t">${esc(t)}</div>${s?`<div class="s">${esc(s)}</div>`:""}</div><div class="d">${esc(d)}</div>${meta?`<div class="meta">${meta}</div>`:""}${li.length?`<ul>${li.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</div>`;
+}
+function pageHead(title,sub){return `<section class="hero"><div class="wrap" style="grid-template-columns:1fr;padding-top:36px;padding-bottom:30px"><div><h1>${esc(title)}</h1>${sub?`<div class="tagline">${esc(sub)}</div>`:""}</div></div></section>`}
+function viewResearch(){
+  const p=data.profile;
+  return pageHead("Research","Decision-support solutions for freight, logistics, and supply chains — combining multi-criteria decision-making, econometrics, machine learning, and GIS.")+
+  `<main><div class="wrap">
+    <div class="section"><div class="section-head"><h2>Research interests</h2></div>
+      <div class="tags">${String(p.interests||"").split(",").map(t=>t.trim()).filter(Boolean).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div></div>
+    <div class="section"><div class="section-head"><h2>Research projects</h2><span class="aside">${data.projects.length} projects</span></div>
+      ${data.projects.map(x=>entry(x.title,x.sponsor,x.dates,x.details,x.methods?`<b>Methods:</b> ${esc(x.methods)}`:"")).join("")}</div>
+    <div class="section"><div class="section-head"><h2>Peer review</h2></div><p>${esc(p.reviewing)}</p></div>
+  </div></main>`;
+}
+const TYPE_LAB={journal:["J","Journal articles"],conference:["C","Conference presentations"],upcoming:["UC","Upcoming conference papers"],review:["S","Under review"]};
+function viewPubs(){
+  const counts={all:data.publications.length};
+  data.publications.forEach(x=>counts[x.type]=(counts[x.type]||0)+1);
+  return pageHead("Publications & Conferences","Peer-reviewed journal articles, conference presentations, and manuscripts in progress.")+
+  `<main><div class="wrap">
+    <div class="pubtools">
+      ${[["all","All"],["journal","Journal"],["conference","Conference"],["upcoming","Upcoming"],["review","Under review"]].map(([k,l])=>`<button class="chip ${pubFilter===k?"on":""}" data-f="${k}">${l} (${counts[k]||0})</button>`).join("")}
+      <input id="pubq" placeholder="Search title, author, or venue…" value="${esc(pubQuery)}">
+    </div>
+    <div id="publist"></div>
+  </div></main>`;
+}
+function pubListHtml(){
+  const q=pubQuery.toLowerCase();
+  const list=data.publications.map((x,i)=>({...x,i})).filter(x=>(pubFilter==="all"||x.type===pubFilter)&&(!q||(x.title+x.authors+x.venue).toLowerCase().includes(q)));
+  if(!list.length) return `<p style="color:var(--muted)">No matching entries.</p>`;
+  let out="";
+  for(const t of ["journal","upcoming","conference","review"]){
+    const g=list.filter(x=>x.type===t); if(!g.length) continue;
+    out+=`<div class="section"><div class="section-head"><h2>${TYPE_LAB[t][1]}</h2><span class="aside">${g.length}</span></div>`;
+    let n=0;
+    g.forEach(x=>{
+      n++;
+      const doi=String(x.doi||"").trim().replace(/^https?:\/\/(dx\.)?doi\.org\//,"");
+      const links=[];
+      if(doi) links.push(`<a href="https://doi.org/${esc(doi)}" target="_blank" rel="noopener">DOI: ${esc(doi)}</a>`);
+      if(safeUrl(x.link)) links.push(`<a href="${esc(x.link)}" target="_blank" rel="noopener">Link</a>`);
+      out+=`<div class="pub"><div class="lab">[${TYPE_LAB[t][0]}.${n}]</div><div>
+        <div class="ti">${doi?`<a href="https://doi.org/${esc(doi)}" target="_blank" rel="noopener" style="text-decoration:none">${esc(x.title)}</a>`:esc(x.title)}</div>
+        <div class="au">${boldMe(x.authors)}${x.year?` (${esc(x.year)})`:""}</div>
+        <div class="ve">${esc(x.venue)}</div>${links.length?`<div class="lk">${links.join(" · ")}</div>`:""}</div></div>`;
+    });
+    out+=`</div>`;
+  }
+  return out;
+}
+function bindPubs(){
+  $("#publist").innerHTML=pubListHtml();
+  document.querySelectorAll(".chip[data-f]").forEach(b=>b.onclick=()=>{pubFilter=b.dataset.f;document.querySelectorAll(".chip[data-f]").forEach(c=>c.classList.toggle("on",c===b));$("#publist").innerHTML=pubListHtml()});
+  $("#pubq").oninput=e=>{pubQuery=e.target.value;$("#publist").innerHTML=pubListHtml()};
+}
+function viewTeaching(){
+  return pageHead("Teaching","Graduate and undergraduate instruction at North Dakota State University.")+
+  `<main><div class="wrap">
+    <div class="section"><div class="section-head"><h2>Teaching experience</h2></div>${data.teaching.map(x=>entry(x.role,x.institution,x.dates,x.details)).join("")}</div>
+    <div class="section"><div class="section-head"><h2>Invited & professional presentations</h2></div>${data.presentations.map(x=>entry(x.title,x.host,x.date,"")).join("")||"<p>None listed.</p>"}</div>
+  </div></main>`;
+}
+function viewCV(){
+  const p=data.profile;
+  return pageHead("Curriculum Vitae",[p.role,p.credentials].filter(Boolean).join(" · "))+
+  `<main><div class="wrap">
+    <div class="section"><div class="section-head"><h2>Education</h2></div>${data.education.map(x=>entry(x.degree,x.institution+(x.location?", "+x.location:""),x.dates,x.details)).join("")}</div>
+    <div class="section"><div class="section-head"><h2>Work experience</h2></div>${data.experience.map(x=>entry(x.role,x.org+(x.location?", "+x.location:""),x.dates,x.details)).join("")}</div>
+    <div class="section"><div class="section-head"><h2>Honors, fellowships, leadership & service</h2></div>${data.honors.map(x=>entry(x.title,x.org,x.dates,"",x.note?esc(x.note):"")).join("")}</div>
+    <div class="grid2">
+      <div class="section"><div class="section-head"><h2>Certifications</h2></div>${data.certifications.map(x=>entry(x.name,x.issuer,x.date,"")).join("")}</div>
+      <div class="section"><div class="section-head"><h2>Memberships</h2></div>${data.memberships.map(x=>entry(x.org,x.role,x.dates,"")).join("")}</div>
+    </div>
+    <div class="section"><div class="section-head"><h2>Skills</h2></div>${data.skills.map(x=>`<div class="skill"><b>${esc(x.category)}:</b> ${esc(x.items)}</div>`).join("")}
+      ${p.languages?`<div class="skill"><b>Languages:</b> ${esc(p.languages)}</div>`:""}</div>
+    <div class="section"><div class="section-head"><h2>References</h2></div><p>Available upon request.</p></div>
+  </div></main>`;
+}
+function viewContact(){
+  const p=data.profile;
+  return pageHead("Contact","I welcome inquiries about research collaboration, speaking, and freight and supply chain projects.")+
+  `<main><div class="wrap"><div class="contact-card"><dl>
+    ${p.email?`<dt>Email</dt><dd><a href="mailto:${esc(p.email)}">${esc(p.email)}</a></dd>`:""}
+    ${p.phone?`<dt>Phone</dt><dd>${esc(p.phone)}</dd>`:""}
+    ${p.affiliation?`<dt>Affiliation</dt><dd>${esc(p.affiliation)}</dd>`:""}
+    ${p.location?`<dt>Location</dt><dd>${esc(p.location)}</dd>`:""}
+    <dt>Profiles</dt><dd><div class="pills" style="margin-top:6px">${linkPills()}</div></dd>
+  </dl></div></div></main>`;
+}
+
+/* ===================== ADMIN ===================== */
+function viewAdmin(){
+  if(loadState==="loading") return pageHead("Admin","")+`<main><div class="wrap"><div class="notice">Checking your access…</div></div></main>`;
+  if(!isOwner) return pageHead("Site admin","Sign in with your GitHub access token to edit this website.")+`<main><div class="wrap"><div class="panel" style="max-width:640px">
+    <form id="login">
+      <label class="f">GitHub repository (username/repository)</label><input id="lgRepo" required placeholder="yourname/yourname.github.io" value="${esc(guessRepo())}">
+      <label class="f">Branch</label><input id="lgBranch" value="main">
+      <label class="f">Access token</label><input id="lgTok" type="password" required placeholder="github_pat_…" autocomplete="off">
+      <div style="margin-top:16px;display:flex;gap:10px;align-items:center"><button class="btn gold" type="submit">Sign in</button><span id="lgMsg" class="status"></span></div>
+    </form>
+    <div class="notice" style="margin:20px 0 0;font-size:.92rem"><b>Where do I get a token?</b> On GitHub go to <b>Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</b>. Under <i>Repository access</i> choose only this website's repository, and under <i>Permissions → Contents</i> choose <b>Read and write</b>. The token is kept only in this browser; visitors can't use this page without one.</div>
+  </div></div></main>`;
+  const tabs=[["profile","Profile & About"],...Object.entries(SCHEMA).map(([k,v])=>[k,v.label]),["data","Backup / Restore"]];
+  return `<main><div class="wrap">
+    <div class="savebar"><div><b>Site editor</b> · <span id="st" class="status"></span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" id="logout">Sign out</button><a class="btn ghost" href="#home">View site</a><button class="btn ghost" id="discard">Discard changes</button><button class="btn gold" id="save">Save & publish</button></div></div>
+    <div class="admin">
+      <div class="admin-nav">${tabs.map(([k,l])=>`<button data-tab="${k}" class="${adminTab===k?"on":""}">${esc(l)}${SCHEMA[k]?`<span class="count">${data[k].length}</span>`:""}</button>`).join("")}</div>
+      <div class="panel" id="panel"></div>
+    </div></div></main>`;
+}
+function fieldHtml(path,f,val){
+  const [key,label,kind,extra]=f;
+  const id=`f_${path}_${key}`;
+  let ctl;
+  if(kind==="textarea") ctl=`<textarea data-path="${path}" data-key="${key}" rows="${extra||4}">${esc(val)}</textarea>`;
+  else if(kind==="select") ctl=`<select data-path="${path}" data-key="${key}">${extra.map(([v,l])=>`<option value="${v}" ${v===val?"selected":""}>${l}</option>`).join("")}</select>`;
+  else ctl=`<input data-path="${path}" data-key="${key}" value="${esc(val)}">`;
+  return `<div><label class="f">${esc(label)}</label>${ctl}</div>`;
+}
+function panelHtml(){
+  if(adminTab==="profile"){
+    const p=data.profile;
+    return `<h2>Profile & About</h2>
+      <div class="photo-edit">${photoHtml()}<div><label class="btn ghost sm" style="display:inline-block">Upload photo<input type="file" accept="image/*" id="photoIn" hidden></label> ${p.photo?`<button class="btn danger sm" id="photoDel">Remove</button>`:""}<div style="font-size:.85rem;color:var(--muted);margin-top:6px">Square headshots work best. Images are resized automatically.</div></div></div>
+      <div class="row2">${PROFILE_FIELDS.map(f=>fieldHtml("profile",f,p[f[0]])).join("")}</div>`;
+  }
+  if(adminTab==="data"){
+    return `<h2>Backup / Restore</h2>
+      <p>Copy a full backup of your site content, or paste one back in to restore it.</p>
+      <textarea id="jsonbox" rows="14" style="font-family:monospace;font-size:.8rem">${esc(JSON.stringify(data,null,1))}</textarea>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn ghost" id="copyJson">Copy backup</button><button class="btn ghost" id="loadJson">Load from box</button><button class="btn danger" id="resetCv">Reset to original CV content</button></div>
+      <div id="jmsg" style="margin-top:8px;font-size:.9rem"></div>`;
+  }
+  const S=SCHEMA[adminTab], arr=data[adminTab];
+  return `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">${esc(S.label)}</h2><button class="btn" id="addItem">+ Add new</button></div>
+    <p style="color:var(--muted);font-size:.9rem">Click an entry to edit it. Use ↑ ↓ to change the order shown on the site.</p>
+    ${arr.map((it,i)=>`<div class="item"><div class="item-head" data-open="${i}"><span class="ttl">${esc(S.title(it)||"(untitled)")}</span>
+      <span class="acts"><button class="btn ghost sm" data-up="${i}" ${i===0?"disabled":""}>↑</button><button class="btn ghost sm" data-down="${i}" ${i===arr.length-1?"disabled":""}>↓</button><button class="btn danger sm" data-del="${i}">Delete</button></span></div>
+      ${openItem===i?`<div class="item-body"><div class="row2">${S.fields.map(f=>fieldHtml(adminTab+"."+i,f,it[f[0]])).join("")}</div></div>`:""}</div>`).join("")||"<p>No entries yet.</p>"}`;
+}
+function setStatus(msg,cls){const s=$("#st");if(!s)return;s.textContent=msg;s.className="status "+(cls||"")}
+function refreshStatus(){
+  dirty()?setStatus("Unsaved changes","dirty"):setStatus("All changes saved","ok");
+}
+function bindAdmin(){
+  if(loadState==="loading") return;
+  if(!isOwner){ const f=$("#login"); if(f) f.onsubmit=doLogin; return; }
+  $("#logout").onclick=()=>{try{localStorage.removeItem(LS_KEY)}catch(_){ } gh=null;isOwner=false;render()};
+  const panel=$("#panel"); panel.innerHTML=panelHtml(); refreshStatus();
+  document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{adminTab=b.dataset.tab;openItem=null;render()});
+  $("#save").onclick=save;
+  $("#discard").onclick=()=>{data=JSON.parse(saved);render()};
+  panel.oninput=e=>{
+    const t=e.target; if(!t.dataset||!t.dataset.path) return;
+    const [sec,idx]=t.dataset.path.split(".");
+    const obj= sec==="profile"?data.profile:data[sec][+idx];
+    obj[t.dataset.key]=t.value; refreshStatus();
+    if(sec!=="profile"){const h=t.closest(".item").querySelector(".ttl");h.textContent=SCHEMA[sec].title(obj)||"(untitled)"}
+  };
+  panel.onchange=panel.oninput;
+  panel.onclick=e=>{
+    const b=e.target.closest("button,[data-open]"); if(!b) return;
+    const arr=data[adminTab];
+    if(b.id==="addItem"){arr.unshift(clone(SCHEMA[adminTab].blank));openItem=0;rerenderPanel();return}
+    if(b.dataset.up){e.stopPropagation();const i=+b.dataset.up;[arr[i-1],arr[i]]=[arr[i],arr[i-1]];openItem=null;rerenderPanel();return}
+    if(b.dataset.down){e.stopPropagation();const i=+b.dataset.down;[arr[i+1],arr[i]]=[arr[i],arr[i+1]];openItem=null;rerenderPanel();return}
+    if(b.dataset.del){e.stopPropagation();confirmBox("Delete this entry?",()=>{arr.splice(+b.dataset.del,1);openItem=null;rerenderPanel()});return}
+    if(b.dataset.open!==undefined && b.tagName!=="BUTTON"){const i=+b.dataset.open;openItem=openItem===i?null:i;rerenderPanel();return}
+    if(b.id==="photoDel"){data.profile.photo="";rerenderPanel();return}
+    if(b.id==="copyJson"){navigator.clipboard.writeText(JSON.stringify(data)).then(()=>$("#jmsg").textContent="Copied.",()=>{$("#jsonbox").select();$("#jmsg").textContent="Select-all done — press Ctrl/Cmd+C."});return}
+    if(b.id==="loadJson"){try{const d=JSON.parse($("#jsonbox").value);if(!d.profile||!Array.isArray(d.publications))throw 0;data=normalize(d);rerenderPanel();$("#jmsg").textContent="Loaded. Click Save & publish to make it live."}catch(_){$("#jmsg").textContent="That doesn't look like a valid backup."}return}
+    if(b.id==="resetCv"){confirmBox("Replace all content with the original CV version? (Not saved until you click Save & publish.)",()=>{data=clone(DEFAULT);rerenderPanel()});return}
+  };
+  const pi=$("#photoIn"); if(pi) pi.onchange=e=>{const f=e.target.files[0];if(f)resizeImage(f,420).then(u=>{data.profile.photo=u;rerenderPanel()})};
+}
+function rerenderPanel(){$("#panel").innerHTML=panelHtml();refreshStatus();
+  document.querySelectorAll("[data-tab]").forEach(b=>{const k=b.dataset.tab;const c=b.querySelector(".count");if(c&&data[k])c.textContent=data[k].length});
+  const pi=$("#photoIn"); if(pi) pi.onchange=e=>{const f=e.target.files[0];if(f)resizeImage(f,420).then(u=>{data.profile.photo=u;rerenderPanel()})};
+}
+function resizeImage(file,max){return new Promise((res,rej)=>{const img=new Image();img.onload=()=>{const s=Math.min(img.width,img.height);const c=document.createElement("canvas");c.width=c.height=Math.min(max,s);c.getContext("2d").drawImage(img,(img.width-s)/2,(img.height-s)/2,s,s,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.85))};img.onerror=rej;img.src=URL.createObjectURL(file)})}
+function confirmBox(msg,yes){
+  const bg=document.createElement("div");bg.className="modal-bg";
+  bg.innerHTML=`<div class="modal"><p style="margin-top:0">${esc(msg)}</p><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn ghost" data-x>Cancel</button><button class="btn danger" data-y>Confirm</button></div></div>`;
+  document.body.appendChild(bg);
+  bg.onclick=e=>{if(e.target.dataset.y!==undefined){yes();bg.remove()}else if(e.target===bg||e.target.dataset.x!==undefined)bg.remove()};
+}
+function b64(str){const bytes=new TextEncoder().encode(str);let bin="";for(let i=0;i<bytes.length;i+=0x8000)bin+=String.fromCharCode.apply(null,bytes.subarray(i,i+0x8000));return btoa(bin)}
+async function ghApi(path,opt={}){
+  const r=await fetch("https://api.github.com/repos/"+gh.repo+path,{...opt,headers:{"Authorization":"Bearer "+gh.token,"Accept":"application/vnd.github+json",...(opt.headers||{})}});
+  const j=await r.json().catch(()=>({}));
+  if(!r.ok){const e=new Error(j.message||("GitHub error "+r.status));e.status=r.status;throw e}
+  return j;
+}
+function guessRepo(){
+  const h=location.hostname; if(!h.endsWith(".github.io")) return "";
+  const user=h.split(".")[0]; const seg=location.pathname.split("/").filter(Boolean)[0];
+  return user+"/"+(seg&&!seg.includes(".")?seg:h);
+}
+async function doLogin(e){
+  e.preventDefault();
+  const m=$("#lgMsg"); m.textContent="Checking…"; m.className="status dirty";
+  gh={repo:$("#lgRepo").value.trim().replace(/^https?:\/\/github\.com\//,"").replace(/\/$/,""),branch:$("#lgBranch").value.trim()||"main",token:$("#lgTok").value.trim()};
+  try{
+    const info=await ghApi("");
+    if(!(info.permissions&&info.permissions.push)) throw new Error("This token can't write to that repository.");
+    try{localStorage.setItem(LS_KEY,JSON.stringify(gh))}catch(_){}
+    isOwner=true; render();
+  }catch(err){gh=null;m.textContent=err.status===404?"Repository not found, or the token can't see it.":err.status===401?"That token isn't valid.":err.message;m.className="status err"}
+}
+async function save(){
+  const btn=$("#save");btn.disabled=true;setStatus("Saving…","dirty");
+  try{
+    const json=JSON.stringify(data,null,1);
+    let sha;
+    try{sha=(await ghApi("/contents/content.json?ref="+encodeURIComponent(gh.branch))).sha}catch(err){if(err.status!==404)throw err}
+    await ghApi("/contents/content.json",{method:"PUT",body:JSON.stringify({message:"Update site content",content:b64(json),branch:gh.branch,...(sha?{sha}:{})})});
+    saved=JSON.stringify(data);setStatus("Saved — live on the site in about a minute","ok");
+  }catch(err){setStatus("Save failed: "+(err.status===401?"token expired or invalid — sign out and in again":err.message),"err")}
+  btn.disabled=false;
+}
+function normalize(d){
+  const out=clone(DEFAULT);
+  out.profile={...out.profile,...(d.profile||{})};
+  for(const k of Object.keys(SCHEMA)) if(Array.isArray(d[k])) out[k]=d[k];
+  return out;
+}
+
+/* ===================== BOOT ===================== */
+render();
+window.addEventListener("beforeunload",e=>{if(isOwner&&dirty()){e.preventDefault();e.returnValue=""}});
+(async()=>{
+  try{const g=JSON.parse(localStorage.getItem(LS_KEY)||"null");if(g&&g.token&&g.repo){gh=g;isOwner=true}}catch(_){}
+  try{
+    const r=await fetch("content.json?v="+Date.now(),{cache:"no-store"});
+    if(r.ok){data=normalize(await r.json());saved=JSON.stringify(data)}
+  }catch(_){}
+  loadState="ready";
+  render();
+})();
+</script>
+</body>
+</html>

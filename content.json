@@ -1,0 +1,509 @@
+{
+ "profile": {
+  "name": "Emmanuel Anu Thompson",
+  "shortName": "EA Thompson",
+  "role": "Ph.D. Candidate · Graduate Research Assistant",
+  "affiliation": "Upper Great Plains Transportation Institute, North Dakota State University",
+  "tagline": "Transportation and supply chain researcher building decision-support tools for autonomous freight, agricultural logistics, and resilient supply chains.",
+  "credentials": "Six Sigma Green Belt · ITC Facilitator",
+  "location": "Fargo, North Dakota, USA",
+  "email": "emmanuel.a.thompson@ndsu.edu",
+  "phone": "",
+  "linkedin": "https://www.linkedin.com/in/mreathompson/",
+  "orcid": "https://orcid.org/0000-0003-2723-6825",
+  "scholar": "https://scholar.google.com/citations?hl=en&user=IChfMs0AAAAJ",
+  "photo": "",
+  "bio": "I am a Ph.D. candidate in Transportation and Supply Chain Management at North Dakota State University and a Graduate Research Assistant at the Upper Great Plains Transportation Institute (UGPTI), advised by Prof. Pan Lu.\n\nMy work sits where transportation research meets professional logistics practice. Before doctoral study I worked in freight forwarding, procurement, and logistics project management in China and Ghana. Today I develop decision-support solutions using multi-criteria decision-making, econometric modeling, machine learning, and geographic information systems.\n\nMy research spans autonomous freight systems, agricultural supply chains, transportation economics, supply chain resilience, digital logistics, and sustainable freight transportation.",
+  "interests": "Autonomous truck systems, Agricultural supply chains, Supply chain resilience, Supply chain plasticity, Digital twin systems, Port competition, Freight logistics, Transportation economics, Sustainable freight transportation",
+  "reviewing": "Ad hoc reviewer for Journal of Transport Geography; Transportation Research Part E: Logistics and Transportation Review; Engineering Applications of Artificial Intelligence; European Transport Research Review; and Case Studies on Transport Policy. Completed 13 verified peer reviews as of September 2026.",
+  "languages": "English (Native), Akan/Twi (Native), Mandarin Chinese (Proficient)"
+ },
+ "news": [
+  {
+   "date": "Oct 2026",
+   "text": "Grade-crossing harm concentration paper published online in Accident Analysis & Prevention."
+  },
+  {
+   "date": "Fall 2026",
+   "text": "Four papers recommended for presentation at the 106th TRB Annual Meeting (January 2027)."
+  },
+  {
+   "date": "2026",
+   "text": "Named Mancur Olson Graduate Fellow, Challey Institute (2026–2027)."
+  },
+  {
+   "date": "2026",
+   "text": "Autonomous truck decision-support system published in the Journal of Business Logistics."
+  },
+  {
+   "date": "Jun 2026",
+   "text": "Appointed Young Member of TRB Standing Committee AT012 on Freight and Logistics Planning and Modeling."
+  }
+ ],
+ "education": [
+  {
+   "degree": "Ph.D. in Transportation and Supply Chain Management",
+   "institution": "North Dakota State University (NDSU)",
+   "location": "Fargo, ND, USA",
+   "dates": "Aug. 2024 – May 2028 (Expected)",
+   "details": "Advisor: Prof. Pan Lu, UGPTI Center Director\nResearch focus: Autonomous trucking policy, supply chain resilience, digital supply chain"
+  },
+  {
+   "degree": "M.Eng. in Transport Planning and Management",
+   "institution": "Shanghai Maritime University",
+   "location": "Shanghai, China",
+   "dates": "Sep. 2019 – Jun. 2022",
+   "details": "Research focus: Freight transportation, railway management, port connectivity"
+  },
+  {
+   "degree": "B.Sc. in Logistics Management",
+   "institution": "Regional Maritime University",
+   "location": "Accra, Ghana",
+   "dates": "Sep. 2015 – Jun. 2019",
+   "details": "Research focus: Warehouse management, port connectivity, logistics modeling"
+  }
+ ],
+ "teaching": [
+  {
+   "role": "Doctoral-Level Instructional Sessions — Research Methods (Graduate)",
+   "institution": "North Dakota State University",
+   "dates": "Fall 2026",
+   "details": "Teach selected Ph.D.-level research methods topics: responsible use of AI in academic research and writing; transportation and assignment optimization problems; and supply chain theories.\nDeliver instruction on research modeling in R and Python and on manuscript preparation, journal submission, and peer review."
+  },
+  {
+   "role": "Teaching Assistant — SCM 116: Business Software Applications (Undergraduate)",
+   "institution": "North Dakota State University",
+   "dates": "Fall 2026",
+   "details": "Support undergraduate instruction and applied coursework in business software applications, including Microsoft Excel assignments.\nAssist students with assignments and software-based activities through virtual office hours and individual guidance."
+  }
+ ],
+ "experience": [
+  {
+   "role": "Graduate Research Assistant",
+   "org": "Upper Great Plains Transportation Institute, NDSU",
+   "location": "Fargo, ND, USA",
+   "dates": "Aug. 2024 – Present",
+   "details": "Conduct research on autonomous freight systems, agricultural logistics, transportation economics, sustainability policy, and decision-support systems.\nDevelop quantitative models using econometrics, machine learning, fuzzy multi-criteria decision-making, and GIS.\nSupport federally funded projects through data analysis, stakeholder engagement, manuscript preparation, and technical reporting."
+  },
+  {
+   "role": "Project Manager & Logistics Lead",
+   "org": "Adaptive Leadership",
+   "location": "Shanghai, China",
+   "dates": "Jan. 2020 – Jul. 2024",
+   "details": "Conducted factory auditing and managed international freight forwarding operations.\nLed market research, lead generation, and procurement strategy for multiple client projects.\nManaged coaching projects, coordinated team deliverables, and facilitated organizational workshops.\nOversaw accounting, invoicing, and financial reporting for project operations."
+  },
+  {
+   "role": "Procurement Intern & Logistics Personnel",
+   "org": "Ghana National Petroleum Corporation (GNPC)",
+   "location": "Accra, Ghana",
+   "dates": "Jun. 2017 – Aug. 2019",
+   "details": "Prepared tender documentation and Requests for Quotation (RFQs).\nHandled Payment of Voucher (POV) preparation and supported accounts payable.\nManaged store inventory and supported logistics coordination for operational supplies."
+  }
+ ],
+ "projects": [
+  {
+   "title": "Autonomous Truck Adoption in Rural Agricultural Communities",
+   "sponsor": "CMMM, U.S. Department of Transportation",
+   "dates": "Feb. 2026 – Present",
+   "methods": "Fuzzy AHP, FCB-FCM, Expert Survey, R, LaTeX, Multi-Stakeholder Analysis",
+   "details": "Designed multi-stakeholder expert surveys for truck drivers, technology providers, government agencies, logistics specialists, and academics.\nApplied a Fuzzy Cognitive Behavioral–Fuzzy AHP (FCB-FAHP) methodology to model causal links between adoption drivers and barriers.\nDeveloped a Fuzzy Cognitive Mapping–based weighting scheme to prioritize the transformational dynamics of autonomous truck deployment.\nFindings published in the Journal of Business Logistics (2026, 47(4), e70097)."
+  },
+  {
+   "title": "Hazardous Materials (HazMat) Freight Risk & Resilience Analysis",
+   "sponsor": "CMMM, U.S. Department of Transportation",
+   "dates": "May 2025 – Dec. 2025",
+   "methods": "GIS, Risk Assessment, Spatial Analysis, Policy Frameworks",
+   "details": "Investigated hazardous materials transportation risks across North Dakota's rural freight network.\nConducted spatial analysis of HazMat incident hotspots and evaluated regulatory policy effectiveness.\nIntegrated a multi-level perspective (MLP) framework to assess transition dynamics in HazMat logistics."
+  },
+  {
+   "title": "Greenhouse Gas Emissions from Mobile Device Location Data",
+   "sponsor": "CMMM, U.S. Department of Transportation",
+   "dates": "Aug. 2024 – Feb. 2025",
+   "methods": "R, FRED API, ArcGIS, Quantile Regression, IV (2SLS), Log-Linear Modeling",
+   "details": "Built a multi-layered econometric framework (seasonal log-linear, quantile regression, IV) to estimate gasoline price elasticity of VMT at census-tract level in the Washington, D.C. metro area.\nImplemented 2SLS estimation with exogenous instruments (station density, crude oil prices, state tax rates).\nAnalyzed urban–rural distributional heterogeneity and seasonal differences in price responsiveness."
+  }
+ ],
+ "publications": [
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Lu, P., Yang, X., Jones, R., & Tolliver, D.",
+   "year": "2026",
+   "title": "A decision-support system for prioritizing the transformational dynamics of autonomous trucks deployment",
+   "venue": "Journal of Business Logistics, 47(4), e70097",
+   "doi": "10.1111/jbl.70097"
+  },
+  {
+   "type": "journal",
+   "authors": "Akpakia, C. L. A., Tetteh, O. A., Thompson, E. A., Guo, H., & Jinyu, W.",
+   "year": "2026",
+   "title": "Concentration of injury and fatality harm at repeat-active highway–rail grade crossings: A multi-state permutation and machine learning analysis",
+   "venue": "Accident Analysis & Prevention, 239, 108824 (2027; online Oct. 14, 2026)",
+   "doi": "10.1016/j.aap.2026.108824"
+  },
+  {
+   "type": "journal",
+   "authors": "Yang, X., Afrin, T., Thompson, E. A., Yodo, N., Lu, P., & Oduor, P.",
+   "year": "2026",
+   "title": "A data-driven approach to understanding hazardous material spill infiltration: From statistical insights to a case study from a rail accident scenario",
+   "venue": "Process Safety and Environmental Protection, 216, 109217",
+   "doi": "10.1016/j.psep.2026.109217"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Boadu, S., Badshah, I., Tetteh, B. K., Akoto, E. T., Abudu, R., Lu, P., & Motuba, D.",
+   "year": "2026",
+   "title": "Towards container terminal automation: A fuzzy decision-support framework for prioritising digital twin adoption determinants",
+   "venue": "Australian Journal of Maritime & Ocean Affairs, 1–30",
+   "doi": "10.1080/18366503.2026.2705740"
+  },
+  {
+   "type": "journal",
+   "authors": "Boadu, S., Thompson, E. A., Godavarthy, R., Akoto, E. T., Dadson, K., & Atuobi, H. B.",
+   "year": "2026",
+   "title": "Internet of Things in rural agricultural freight transportation: A case study of North Dakota State",
+   "venue": "Transportation Research Part E: Logistics and Transportation Review, 214, 104929",
+   "doi": "10.1016/j.tre.2026.104929"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Motuba, D., Lu, P., Agyeman, S., & Akoto, E. T.",
+   "year": "2026",
+   "title": "Inclusive urban transport in Ghana: Bridging informal transport systems and national policy",
+   "venue": "African Transport Studies, 4, 100106",
+   "doi": "10.1016/j.aftran.2026.100106"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Boadu, S., Akoto, E. T., Motuba, D., & Lu, P.",
+   "year": "2026",
+   "title": "Toward freight mobility-as-a-service through digital freight platforms and multimodal operations",
+   "venue": "Transportation Research Today, 1, 100022",
+   "doi": "10.1016/j.trt.2026.100022"
+  },
+  {
+   "type": "journal",
+   "authors": "Domfeh, S. A., Ofori-Addai, G., & Thompson, E. A.",
+   "year": "2026",
+   "title": "An analytical study of hinterland transport inefficiencies on supply chain performance",
+   "venue": "Transportation Research Record: Journal of the Transportation Research Board. Advance online publication",
+   "doi": "10.1177/03611981261464608"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Yang, X., Lu, P., Bridgelall, R., & Tolliver, D.",
+   "year": "2026",
+   "title": "A decision support framework of cybersecurity strategies for resilient deployment of autonomous trucks",
+   "venue": "Journal of Transportation Security, 19, 26",
+   "doi": "10.1007/s12198-026-00348-9"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Motuba, D., Lu, P., Alimo, P. K., Tetteh, B. K., Ofori-Addai, G., Abudu, R., Boadu, S., & Agyemang-Duah, A. T.",
+   "year": "2026",
+   "title": "Decision-support systems in container terminal automation: A systematic review of digital twin–expert system integration",
+   "venue": "Australian Journal of Maritime & Ocean Affairs, 1–32",
+   "doi": "10.1080/18366503.2026.2646718"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Lu, P., Tolliver, D., & Jones, R.",
+   "year": "2026",
+   "title": "Economic analysis of autonomous truck technology: Cost implications and operational benefits",
+   "venue": "Transportation Planning and Technology, 1–19",
+   "doi": "10.1080/03081060.2026.2636745"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Mattson, J., Lu, P., Akoto, E. T., Boadu, S., Atuobi, H. B., Dadson, K., & Tolliver, D.",
+   "year": "2025",
+   "title": "How can autonomous truck systems transform North Dakota's agricultural supply chain industry?",
+   "venue": "Future Transportation, 5(3), 100",
+   "doi": "10.3390/futuretransp5030100"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., & Lu, P.",
+   "year": "2025",
+   "title": "Determinants of rail freight transportation impact on port competition in West Africa",
+   "venue": "Journal of Transport Geography, 127, 104286",
+   "doi": "10.1016/j.jtrangeo.2025.104286"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Lu, P., Alimo, P. K., Atuobi, H. B., Akoto, E. T., & Abbew, C. K.",
+   "year": "2025",
+   "title": "Revolutionizing railway systems: A systematic review of digital twin technologies",
+   "venue": "High-Speed Railway, 3(3), 238–250",
+   "doi": "10.1016/j.hspr.2025.05.005"
+  },
+  {
+   "type": "journal",
+   "authors": "Abudu, R., Thompson, E. A., Dzawu, F. S., & Roa-Henriquez, A.",
+   "year": "2025",
+   "title": "A meta-analysis assessment of adaptive and transformative approaches to supply chain resilience",
+   "venue": "Supply Chain Analytics, 10, 100124",
+   "doi": "10.1016/j.sca.2025.100124"
+  },
+  {
+   "type": "journal",
+   "authors": "Badshah, I., Bridgelall, R., & Thompson, E. A.",
+   "year": "2025",
+   "title": "GIS-enabled truck–drone hybrid systems for agricultural last-mile delivery: A multidisciplinary review with insights from a rural region",
+   "venue": "Drones, 9(12), 868",
+   "doi": "10.3390/drones9120868"
+  },
+  {
+   "type": "journal",
+   "authors": "Boadu, S., Thompson, E. A., Godavarthy, R., Boateng, A., & Penneigh, R.",
+   "year": "2025",
+   "title": "A decade of smart port concept: A comprehensive review of past, present, and future implications",
+   "venue": "Australian Journal of Maritime & Ocean Affairs, 1–27",
+   "doi": "10.1080/18366503.2025.2546729"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Akoto, E. T., Atuobi, H. B., Lu, P., & Abbew, C. K.",
+   "year": "2025",
+   "title": "Synergizing urban mobility: The interplay between autonomous vehicles and autonomous parking spaces for sustainable development",
+   "venue": "Journal of Transportation Technologies, 15(1), 50–59",
+   "doi": "10.4236/jtts.2025.151003"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Lu, P., Zhao, G., Cirillo, C., & Akoto, E. T.",
+   "year": "2025",
+   "title": "Seasonal variations in travel demand elasticity in response to gasoline price changes",
+   "venue": "Open Journal of Business and Management, 13, 1418–1434",
+   "doi": "10.4236/ojbm.2025.132074"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., et al.",
+   "year": "2024",
+   "title": "Towards sustainable freight transportation in Africa: Complementarity of the fuzzy Delphi and best-worst methods",
+   "venue": "Sustainable Futures, 8, 100371",
+   "doi": "10.1016/j.sftr.2024.100371"
+  },
+  {
+   "type": "journal",
+   "authors": "Thompson, E. A., Abudu, R., & Zheng, S.",
+   "year": "2022",
+   "title": "Empirical analysis of multiple-criteria decision-making process for freight transportation mode selection",
+   "venue": "Journal of Transportation Technologies, 12(1), 28–41",
+   "doi": "10.4236/jtts.2022.121002"
+  },
+  {
+   "type": "journal",
+   "authors": "Abudu, R., Zheng, S., & Thompson, E. A.",
+   "year": "2021",
+   "title": "Port adaptation and efficiency: An empirical study of Ghanaian ports",
+   "venue": "International Journal of Regional Development, 8(2), 36",
+   "doi": "10.5296/ijrd.v8i2.18942"
+  },
+  {
+   "type": "conference",
+   "authors": "Thompson, E. A., Lu, P., & Tolliver, D.",
+   "year": "2026",
+   "title": "A decision support framework of cybersecurity strategies for resilient deployment of autonomous trucks",
+   "venue": "Student podium presentation, 67th International Meeting of the Transportation Research Forum (April 2026)",
+   "doi": ""
+  },
+  {
+   "type": "conference",
+   "authors": "Thompson, E. A., Motuba, D., & Lu, P.",
+   "year": "2026",
+   "title": "Freight mobility-as-a-service: A systematic review and integrated framework for platform-based freight logistics",
+   "venue": "Student podium presentation, 67th International Meeting of the Transportation Research Forum (April 2026)",
+   "doi": ""
+  },
+  {
+   "type": "conference",
+   "authors": "Afrin, T., Yang, X., Thompson, E. A., Yodo, N., Lu, P., & Oduor, P.",
+   "year": "2026",
+   "title": "AI-based prediction of HazMat spill diffusion area and infiltration depth using laboratory-controlled data",
+   "venue": "105th Annual Meeting of the Transportation Research Board, Washington, D.C. (Jan. 12, 2026). TRBAM-26-02980",
+   "doi": ""
+  },
+  {
+   "type": "conference",
+   "authors": "Yang, X., Afrin, T., Thompson, E. A., Yodo, N., Lu, P., & Oduor, P.",
+   "year": "2026",
+   "title": "Exploring statistical relationships in HazMat infiltration depth: A correlation-based framework with scenario analysis using a real-world rail accident baseline",
+   "venue": "105th Annual Meeting of the Transportation Research Board, Washington, D.C. (Jan. 13, 2026). TRBAM-26-03579",
+   "doi": ""
+  },
+  {
+   "type": "conference",
+   "authors": "Thompson, E. A., & Lu, P.",
+   "year": "2026",
+   "title": "Towards container terminal automation: Assessing the determinants of digital twin technology",
+   "venue": "Poster, 105th Annual Meeting of the Transportation Research Board, Washington, D.C. (Jan. 2026)",
+   "doi": ""
+  },
+  {
+   "type": "conference",
+   "authors": "Thompson, E. A., & Lu, P.",
+   "year": "2025",
+   "title": "How can autonomous truck systems transform North Dakota's agricultural supply chain industry",
+   "venue": "Poster, 2025 Autonomous Trucking Conference: Evolution of Autonomous Trucking in North Dakota and the Northern Plains, Grand Forks, ND (Aug. 2025)",
+   "doi": ""
+  },
+  {
+   "type": "conference",
+   "authors": "Thompson, E. A., & Lu, P.",
+   "year": "2025",
+   "title": "Analyzing the determinants of rail freight impact on port competition in West Africa",
+   "venue": "Poster, 104th Annual Meeting of the Transportation Research Board, Washington, D.C. (Jan. 2025)",
+   "doi": ""
+  },
+  {
+   "type": "upcoming",
+   "authors": "Thompson, E. A., Yang, X., & Lu, P.",
+   "year": "2027",
+   "title": "Multi-objective optimization of autonomous trucks leasing for rural operation: A case study of North Dakota",
+   "venue": "Recommended for presentation, 106th TRB Annual Meeting, Washington, D.C. Advanced for further assessment by the Transportation Research Record Editorial Board. TRBAM-27-00527",
+   "doi": ""
+  },
+  {
+   "type": "upcoming",
+   "authors": "Akoto, E. T., Thompson, E. A., Boadu, S., Dadson, K., & Atuobi, H. B.",
+   "year": "2027",
+   "title": "Sustainable logistics for agriculture: A systematic literature review of freight decarbonization in the Northern Great Plains",
+   "venue": "Recommended for presentation, 106th TRB Annual Meeting, Washington, D.C. TRBAM-27-05573",
+   "doi": ""
+  },
+  {
+   "type": "upcoming",
+   "authors": "Akoto, E. T., Asante, B., & Thompson, E. A.",
+   "year": "2027",
+   "title": "When networks stay open but transportation fails: Shock-specific resilience in United States freight and passenger services",
+   "venue": "Recommended for presentation, 106th TRB Annual Meeting, Washington, D.C. TRBAM-27-05446",
+   "doi": ""
+  },
+  {
+   "type": "upcoming",
+   "authors": "Kumi, A., Thompson, E. A., Asante, B., & Boadu, S.",
+   "year": "2027",
+   "title": "Geographical crash injury disparities in North Dakota using a hybrid neural network multinomial logit model",
+   "venue": "Recommended for presentation, 106th TRB Annual Meeting, Washington, D.C. TRBAM-27-05338",
+   "doi": ""
+  },
+  {
+   "type": "review",
+   "authors": "Thompson, E. A., & Lu, P.",
+   "year": "",
+   "title": "Towards container terminal automation: A decision-support framework for digital twin application",
+   "venue": "Under first revision at Research in Transportation Business & Management",
+   "doi": ""
+  }
+ ],
+ "presentations": [
+  {
+   "title": "Digital Twin for Logistics Fleet Management",
+   "host": "C.H. Robinson Supply Chain Team",
+   "date": "March 2026"
+  },
+  {
+   "title": "Ghana Today: The Beauty and Essence of Going to Ghana",
+   "host": "NUGS-USA, Bison Chapter",
+   "date": "March 2026"
+  }
+ ],
+ "honors": [
+  {
+   "title": "Mancur Olson Graduate Fellow",
+   "org": "Challey Institute",
+   "dates": "2026 – 2027",
+   "note": ""
+  },
+  {
+   "title": "Best Research Award",
+   "org": "College of Business, North Dakota State University",
+   "dates": "2025 – 2026",
+   "note": ""
+  },
+  {
+   "title": "President",
+   "org": "Supply Chain Management Club, North Dakota State University",
+   "dates": "2026 – 2027",
+   "note": ""
+  },
+  {
+   "title": "Young Member",
+   "org": "Transportation Research Board (TRB)",
+   "dates": "Jun. 2026 – Apr. 2028",
+   "note": "AT012: Standing Technical Committee on Freight and Logistics Planning and Modeling"
+  },
+  {
+   "title": "Community Volunteer",
+   "org": "Ruby's Pantry and New Life Center Thrift",
+   "dates": "200+ hours",
+   "note": ""
+  }
+ ],
+ "certifications": [
+  {
+   "name": "Six Sigma Green Belt Certificate",
+   "issuer": "Institute of Industrial & Systems Engineers (IISE)",
+   "date": "Jan. 2026 (exp. Jan. 2029)"
+  },
+  {
+   "name": "ITC Facilitator Certification",
+   "issuer": "Immunity to Change (ITC)",
+   "date": "2023"
+  },
+  {
+   "name": "Customer Relationship Management (CRM)",
+   "issuer": "Professional Development",
+   "date": "2022"
+  },
+  {
+   "name": "Microsoft Office Applications",
+   "issuer": "Microsoft",
+   "date": "2021"
+  }
+ ],
+ "memberships": [
+  {
+   "org": "Council of Supply Chain Management Professionals (CSCMP)",
+   "role": "Member",
+   "dates": "2026 – Present"
+  },
+  {
+   "org": "Institute of Industrial & Systems Engineers (IISE)",
+   "role": "Member",
+   "dates": "2026 – Present"
+  },
+  {
+   "org": "Transportation Research Forum (TRF)",
+   "role": "Member",
+   "dates": "2025 – Present"
+  }
+ ],
+ "skills": [
+  {
+   "category": "Quantitative Methods",
+   "items": "Fuzzy AHP, Fuzzy Delphi, FCB-FCM, Fuzzy TOPSIS, BWM, CRITIC, MCDM, Econometrics, Quantile Regression, IV/2SLS, Log-Linear Modeling, GAM, LASSO"
+  },
+  {
+   "category": "Programming & Statistical Software",
+   "items": "R (ggplot2, tidyverse, lavaan), Python, SPSS, Stata, SuperDecision, AnyLoc, Fuzzy Mind Mapping"
+  },
+  {
+   "category": "GIS & Spatial Analysis",
+   "items": "ArcGIS, QGIS, Spatial Statistics, Freight Accessibility Mapping"
+  },
+  {
+   "category": "Decision Support Systems",
+   "items": "Hybrid Fuzzy-Neural Networks, Ensemble Learning, Expert Systems, Digital Twin Frameworks"
+  },
+  {
+   "category": "Research Skills",
+   "items": "Systematic Literature Review, Multi-Level Perspective (MLP), Survey Instrument Design, Multi-Stakeholder Analysis, Academic Writing & Peer Review"
+  },
+  {
+   "category": "Document Preparation",
+   "items": "LaTeX (double-column, beamer, TikZ), Microsoft Office Suite"
+  }
+ ]
+}
