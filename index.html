@@ -144,13 +144,13 @@ label.f{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin
 .modal-bg{position:fixed;inset:0;background:rgba(15,25,40,.5);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px}
 .modal{background:#fff;border-radius:10px;padding:24px;max-width:640px;width:100%;max-height:90vh;overflow:auto}
 .photo-edit{display:flex;gap:18px;align-items:center}
-.photo-edit .photo{width:110px;height:110px;border-width:3px}
+.photo-edit .photo{width:96px;height:128px;border-width:3px;border-radius:4px}
 .photo-edit .photo .mono{font-size:2rem}
 
-.crop-view{position:relative;width:300px;height:300px;max-width:100%;margin:0 auto;overflow:hidden;border-radius:8px;background:#1b2230;touch-action:none;cursor:grab;user-select:none}
+.crop-view{position:relative;width:240px;height:320px;max-width:100%;margin:0 auto;overflow:hidden;border-radius:8px;background:#1b2230;touch-action:none;cursor:grab;user-select:none}
 .crop-view:active{cursor:grabbing}
 .crop-view img{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;pointer-events:none}
-.crop-ring{position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 400px rgba(10,16,26,.55);border:2px solid rgba(255,255,255,.85);pointer-events:none}
+.crop-ring{position:absolute;inset:0;border:2px solid rgba(255,255,255,.9);box-shadow:inset 0 0 0 1px rgba(0,0,0,.3);pointer-events:none;background:linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)) 33.3% 0/1px 100% no-repeat,linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)) 66.6% 0/1px 100% no-repeat,linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)) 0 33.3%/100% 1px no-repeat,linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.18)) 0 66.6%/100% 1px no-repeat}
 .crop-zoom{display:flex;align-items:center;gap:10px;margin:16px auto 0;max-width:300px}
 .crop-zoom input{padding:0}
 
@@ -321,6 +321,60 @@ svg.chart g.mark:hover .bar{opacity:.8}
   footer .wrap{justify-content:center;text-align:center}
 }
 @media (min-width:821px){.m-pubtools{display:none}}
+
+/* ===== Boxed page + sidebar layout ===== */
+body{background:#0a2f4b;background-image:linear-gradient(180deg,#0a2f4b 0%,#072339 100%)}
+.shell{max-width:1180px;margin:0 auto 0;overflow-x:clip;background:var(--paper);box-shadow:0 0 40px rgba(0,0,0,.35)}
+.shell .wrap{max-width:1180px}
+footer{background:#14110f}
+.home-grid>*{min-width:0}
+.home-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;grid-template-areas:"about side" "rest side";gap:0 32px;align-items:start}
+.about{grid-area:about;background:#fff;border:1px solid var(--line);border-top:none;padding:26px 30px 24px}
+.sidebar{grid-area:side;align-self:stretch;margin-top:0}
+.rest{grid-area:rest;padding-top:28px}
+main.home{padding:0 0 50px}
+.home-name{font-size:2.1rem;margin-bottom:.1em}
+.about .role{color:var(--gold);font-weight:600;font-size:1rem}
+.rule{height:1px;background:linear-gradient(90deg,#8fb3d1,rgba(143,179,209,0));margin:14px 0 20px}
+.portrait{float:left;width:230px;height:307px;object-fit:cover;margin:4px 24px 12px 0;box-shadow:0 4px 14px rgba(0,0,0,.18);background:#14324f}
+.portrait-ph{display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:3.4rem}
+.lede{font-size:1.12rem;color:var(--navy-2);font-weight:500}
+.about p{margin:0 0 1em}
+.clear{clear:both}
+.sidebar{display:flex;flex-direction:column}
+.sbox{padding:16px 18px 12px;position:relative}
+.sbox h4{font-family:var(--sans);font-weight:600;font-size:1rem;margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid currentColor;border-image:linear-gradient(90deg,currentColor,transparent) 1}
+.sbox.light{background:#d4dde5;color:#14324f}
+.sbox.dark{background:#0d4c74;color:#fff}
+.sbox.dark h4{color:#fff}
+.sbox-body{display:flex;gap:14px;align-items:flex-start}
+.sthumb{flex-shrink:0;width:92px;height:92px;background:rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+.sbox.dark .sthumb{background:#f3e8d2}
+.sthumb svg{width:52px;height:52px}
+.sthumb .spark svg{width:78px;height:48px}
+.sbox.light .sthumb{background:#0d4c74}
+.sbox.light .sthumb svg path,.sbox.light .sthumb svg rect,.sbox.light .sthumb svg circle{stroke:#e9bf62}
+.sbox.light .sthumb .spark svg path{stroke:none}
+.sbox p{margin:0;font-size:.88rem;line-height:1.45}
+.sbox.dark p{color:#dbe7f1}
+.sm{display:block;text-align:right;font-size:.78rem;font-weight:700;text-decoration:none;margin-top:8px;color:inherit;opacity:.85}
+.sm:hover{opacity:1;color:#e9bf62}
+.snews{list-style:none;margin:0;padding:0;font-size:.86rem}
+.snews li{padding:6px 0;border-bottom:1px dashed rgba(20,50,79,.25);line-height:1.4}
+.snews b{color:#7a5410}
+.rest .grid2{grid-template-columns:1fr;gap:20px}
+@media (max-width:820px){
+  body{background:var(--paper)}
+  .shell{box-shadow:none}
+  .home-grid{grid-template-columns:1fr;grid-template-areas:"about" "side" "rest";gap:0}
+  .home .wrap{padding:0}
+  .about{border:none;padding:20px 16px}
+  .home-name{font-size:1.6rem}
+  .portrait{width:42%;height:auto;aspect-ratio:3/4;margin:4px 16px 8px 0}
+  .lede{font-size:1rem}
+  .rest{padding:24px 16px 0}
+  .sthumb{width:84px;height:84px}.sthumb svg{width:46px;height:46px}.sthumb .spark svg{width:70px;height:42px}
+}
 </style>
 </head>
 <body>
@@ -329,6 +383,7 @@ svg.chart g.mark:hover .bar{opacity:.8}
   <div class="live"><span class="pulse"></span><b>Live</b><span class="sep">|</span><span id="lvLoc">Fargo, ND</span><span class="sep">·</span><span id="lvClock">—</span><span class="sep">·</span><span id="lvWx">loading weather…</span></div>
   <div class="live-r"><span id="lvUpd"></span><span class="status-pill" id="lvStatus"></span></div>
 </div></div>
+<div class="shell">
 <header class="banner">
   <svg class="net" viewBox="0 0 700 200" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
     <g fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.5">
@@ -366,6 +421,7 @@ svg.chart g.mark:hover .bar{opacity:.8}
     <div><span id="copy"></span> · <a href="#admin" style="margin:0">Admin</a></div>
   </div>
 </footer>
+</div><!-- /shell -->
 
 <script>
 /* ===================== DEFAULT CONTENT (from CV) ===================== */
@@ -583,69 +639,73 @@ const ICONS={
   contact:`<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#1f3a5f" stroke-width="2.2"><rect x="6" y="11" width="36" height="26" rx="3"/><path d="M7 13l17 13 17-13" stroke="#b8862f"/></svg>`,
   service:`<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#1f3a5f" stroke-width="2.2"><circle cx="24" cy="18" r="10"/><path d="M18 26l-4 16 10-5 10 5-4-16" stroke="#b8862f"/></svg>`
 };
+function portraitHtml(){
+  const p=data.profile;
+  if(p.photo && p.photo.startsWith("data:image/")) return `<img class="portrait" src="${p.photo}" alt="${esc(p.name)}">`;
+  const ini=(p.name||"").split(/\s+/).filter(Boolean).map(w=>w[0]).slice(0,3).join("");
+  return `<div class="portrait portrait-ph"><span>${esc(ini)}</span></div>`;
+}
+function miniSpark(){
+  const ps=data.publications.filter(x=>/^\d{4}$/.test(String(x.year).trim()));
+  if(!ps.length) return ICONS.publications;
+  const ys=ps.map(x=>+x.year),lo=Math.min(...ys),hi=Math.max(...ys);const v=[];for(let y=lo;y<=hi;y++)v.push(ps.filter(x=>+x.year===y).length);
+  const m=Math.max(...v),W=120,H=70,bw=W/v.length;
+  return `<svg width="120" height="70" viewBox="0 0 ${W} ${H}">${v.map((n,i)=>`<path d="${topRounded(i*bw+3,H-(H-6)*n/m,bw-6,(H-6)*n/m,3)}" fill="#e9bf62"/>`).join("")}</svg>`;
+}
+function sideBoxes(){
+  const p=data.profile, pubs=data.publications;
+  const latestJ=pubs.find(x=>x.type==="journal");
+  const box=(cls,title,thumb,text,href,more)=>`<div class="sbox ${cls}"><h4>${title}</h4><div class="sbox-body"><div class="sthumb">${thumb}</div><p>${text}</p></div><a class="sm" href="${href}">${more||"read more…"}</a></div>`;
+  return `<aside class="sidebar">
+    <div class="sbox light"><h4>Latest news</h4><ul class="snews">${data.news.slice(0,4).map(n=>`<li><b>${esc(n.date)}</b> ${esc(n.text)}</li>`).join("")||"<li>No updates yet.</li>"}</ul></div>
+    ${box("dark","Research",ICONS.research,"USDOT-funded work on autonomous trucks, HazMat freight risk and travel-demand econometrics.","#research")}
+    ${box("light","Publications",`<div class="spark">${miniSpark()}</div>`,latestJ?`Latest: <em>${esc(latestJ.title.length>80?latestJ.title.slice(0,78).replace(/\s+\S*$/,"")+"…":latestJ.title)}</em>`:"Journal articles and conference papers.","#publications")}
+    ${box("dark","Teaching",ICONS.teaching,"Doctoral research-methods sessions and undergraduate business software support at NDSU.","#teaching")}
+    ${box("light","Get in touch",ICONS.contact,esc(p.status||"Open to research collaboration")+".","#contact","contact me…")}
+  </aside>`;
+}
 function viewHome(){
   const p=data.profile, pubs=data.publications;
   const nJ=pubs.filter(x=>x.type==="journal").length, nC=pubs.filter(x=>x.type==="conference"||x.type==="upcoming").length;
-  const bio=String(p.bio||"").split(/\n\s*\n/).map(x=>`<p>${esc(x.trim())}</p>`).join("");
-  const latestJ=pubs.find(x=>x.type==="journal");
+  const paras=String(p.bio||"").split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
   const L=live.metrics;
-  return `<section class="hero"><div class="wrap">
-    ${photoHtml()}
-    <div>
-      <h1>${esc(p.name)}</h1>
+  return `<main class="home"><div class="wrap home-grid">
+    <section class="about">
+      <h1 class="home-name">${esc(p.name)}</h1>
       <div class="role">${esc(p.role)}${p.affiliation?` · ${esc(p.affiliation)}`:""}</div>
-      <div class="tagline">${esc(p.tagline)}</div>
+      <div class="rule"></div>
+      ${portraitHtml()}
+      <p class="lede">${esc(p.tagline)}</p>
+      ${paras.map(x=>`<p>${esc(x)}</p>`).join("")}
+      <div class="clear"></div>
       <div class="pills">${linkPills()}</div>
-    </div></div></section>
-  <main><div class="wrap">
-    <div class="stats">
-      <div class="stat"><b data-count="${nJ}">${nJ}</b><span>Journal articles</span></div>
-      <div class="stat"><b data-count="${nC}">${nC}</b><span>Conference papers</span></div>
-      <div class="stat"><b ${L?`data-count="${L.cites}"`:""}>${L?L.cites:"…"}</b><span>Citations <small style="color:#2f7a4f">● live</small></span></div>
-      <div class="stat"><b ${L?`data-count="${L.h}"`:""}>${L?L.h:"…"}</b><span>h-index <small style="color:#2f7a4f">● live</small></span></div>
-    </div>
-    <div class="two">
-      <div class="section lead">
-        <div class="section-head"><h2>About</h2></div>
-        ${bio}
-        <div class="tags" style="margin-top:14px">${String(p.interests||"").split(",").map(t=>t.trim()).filter(Boolean).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <div class="tags" style="margin-top:14px">${String(p.interests||"").split(",").map(t=>t.trim()).filter(Boolean).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+    </section>
+    ${sideBoxes()}
+    <section class="rest">
+      <div class="stats">
+        <div class="stat"><b data-count="${nJ}">${nJ}</b><span>Journal articles</span></div>
+        <div class="stat"><b data-count="${nC}">${nC}</b><span>Conference papers</span></div>
+        <div class="stat"><b ${L?`data-count="${L.cites}"`:""}>${L?L.cites:"…"}</b><span>Citations <small style="color:#2f7a4f">● live</small></span></div>
+        <div class="stat"><b ${L?`data-count="${L.h}"`:""}>${L?L.h:"…"}</b><span>h-index <small style="color:#2f7a4f">● live</small></span></div>
       </div>
-      <aside>
-        <div class="sidebox">
-          <h3>Latest news</h3>
-          <ul class="news">${data.news.slice(0,6).map(n=>`<li><span class="date">${esc(n.date)}</span>${esc(n.text)}</li>`).join("")||"<li>No updates yet.</li>"}</ul>
+      <div class="section">
+        <div class="section-head"><h2>Research at a glance</h2></div>
+        <div class="grid2">
+          <div class="chart-card"><h3>Publications by year</h3><div class="chart-sub">Journal articles and conference papers</div>
+            <div class="legend"><span><i style="background:${C_J}"></i>Journal</span><span><i style="background:${C_C}"></i>Conference</span></div>
+            ${pubsByYearChart()}</div>
+          <div class="chart-card"><h3>Research themes</h3><div class="chart-sub">Number of papers touching each theme</div>${themesChart()}</div>
         </div>
-      </aside>
-    </div>
-
-    <div class="section">
-      <div class="section-head"><h2>Research at a glance</h2></div>
-      <div class="grid2">
-        <div class="chart-card"><h3>Publications by year</h3><div class="chart-sub">Journal articles and conference papers</div>
-          <div class="legend"><span><i style="background:${C_J}"></i>Journal</span><span><i style="background:${C_C}"></i>Conference</span></div>
-          ${pubsByYearChart()}</div>
-        <div class="chart-card"><h3>Research themes</h3><div class="chart-sub">Number of papers touching each theme</div>${themesChart()}</div>
       </div>
-    </div>
-
-    <div class="section">
-      <div class="section-head"><h2>Research impact <span class="livebadge"><span class="pulse"></span>Live</span></h2><span class="aside">Updates automatically</span></div>
-      <div class="chart-card">${impactHtml()}</div>
-    </div>
-
-    <div class="section">
-      <div class="journey"><h3>Academic & professional journey</h3><div class="d-only">${journeySvg()}</div><div class="m-only">${journeyList()}</div></div>
-    </div>
-
-    <div class="section">
-      <div class="section-head"><h2>Explore</h2></div>
-      <div class="features">
-        <div class="feature"><div class="thumb">${ICONS.research}</div><div><h3>Research</h3><p>USDOT-funded work on autonomous truck adoption, HazMat freight risk, and travel demand econometrics.</p><a class="more" href="#research">read more →</a></div></div>
-        <div class="feature"><div class="thumb">${ICONS.publications}</div><div><h3>Publications</h3><p>${latestJ?`Latest: <em>${esc(latestJ.title)}</em>`:"Journal articles, conference papers, and work under review."}</p><a class="more" href="#publications">read more →</a></div></div>
-        <div class="feature"><div class="thumb">${ICONS.teaching}</div><div><h3>Teaching</h3><p>Doctoral research-methods instruction and undergraduate business software support at NDSU.</p><a class="more" href="#teaching">read more →</a></div></div>
-        <div class="feature"><div class="thumb">${ICONS.contact}</div><div><h3>Get in touch</h3><p>Open to research collaboration, speaking invitations, and freight and supply chain projects.</p><a class="more" href="#contact">contact me →</a></div></div>
+      <div class="section">
+        <div class="section-head"><h2>Research impact <span class="livebadge"><span class="pulse"></span>Live</span></h2><span class="aside">Updates automatically</span></div>
+        <div class="chart-card">${impactHtml()}</div>
       </div>
-    </div>
+      <div class="section" style="margin-bottom:0">
+        <div class="journey"><h3>Academic & professional journey</h3><div class="d-only">${journeySvg()}</div><div class="m-only">${journeyList()}</div></div>
+      </div>
+    </section>
   </div></main>`;
 }
 
@@ -975,10 +1035,10 @@ function bindPhotoInput(){const pi=$("#photoIn"); if(pi) pi.onchange=e=>{const f
 function openCropper(src){
   const img=new Image();
   img.onload=()=>{
-    const V=300, OUT=480;
+    const V=240, VH=320, OW=450, OH=600;
     const bg=document.createElement("div");bg.className="modal-bg";
-    bg.innerHTML=`<div class="modal" style="max-width:380px"><h3 style="margin-top:0">Position your photo</h3>
-      <p style="margin:0 0 14px;color:var(--muted);font-size:.92rem">Drag the picture to center it inside the circle. Use the slider (or mouse wheel) to zoom.</p>
+    bg.innerHTML=`<div class="modal" style="max-width:340px"><h3 style="margin-top:0">Position your photo</h3>
+      <p style="margin:0 0 14px;color:var(--muted);font-size:.92rem">Drag the picture to position yourself inside the frame. Use the slider (or mouse wheel) to zoom.</p>
       <div class="crop-view"><img alt=""><div class="crop-ring"></div></div>
       <div class="crop-zoom"><span>−</span><input type="range" min="1" max="4" step="0.01" value="1"><span>+</span></div>
       <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:18px"><button class="btn ghost" data-x>Cancel</button><button class="btn gold" data-ok>Use photo</button></div></div>`;
@@ -986,12 +1046,12 @@ function openCropper(src){
     const view=bg.querySelector(".crop-view"), el=bg.querySelector(".crop-view img"), range=bg.querySelector("input[type=range]");
     el.src=src; el.style.width=img.naturalWidth+"px"; el.style.height=img.naturalHeight+"px";
     const vw=()=>view.clientWidth||V;
-    let base=Math.max(V/img.naturalWidth,V/img.naturalHeight), zoom=1;
-    let x=(V-img.naturalWidth*base)/2, y=(V-img.naturalHeight*base)/2;
+    let base=Math.max(V/img.naturalWidth,VH/img.naturalHeight), zoom=1;
+    let x=(V-img.naturalWidth*base)/2, y=(VH-img.naturalHeight*base)/2;
     const sc=()=>base*zoom;
-    function clamp(){const w=img.naturalWidth*sc(),h=img.naturalHeight*sc();x=Math.min(0,Math.max(V-w,x));y=Math.min(0,Math.max(V-h,y))}
+    function clamp(){const w=img.naturalWidth*sc(),h=img.naturalHeight*sc();x=Math.min(0,Math.max(V-w,x));y=Math.min(0,Math.max(VH-h,y))}
     function draw(){clamp();const r=vw()/V;el.style.transform=`translate(${x*r}px,${y*r}px) scale(${sc()*r})`}
-    function setZoom(z){z=Math.max(1,Math.min(4,z));const cx=(V/2-x)/sc(),cy=(V/2-y)/sc();zoom=z;x=V/2-cx*sc();y=V/2-cy*sc();range.value=z;draw()}
+    function setZoom(z){z=Math.max(1,Math.min(4,z));const cx=(V/2-x)/sc(),cy=(VH/2-y)/sc();zoom=z;x=V/2-cx*sc();y=VH/2-cy*sc();range.value=z;draw()}
     draw();
     let drag=null;
     view.addEventListener("pointerdown",e=>{drag={px:e.clientX,py:e.clientY,x,y};view.setPointerCapture(e.pointerId)});
@@ -1001,8 +1061,8 @@ function openCropper(src){
     range.oninput=()=>setZoom(+range.value);
     bg.onclick=e=>{
       if(e.target.dataset.ok!==undefined){
-        const c=document.createElement("canvas");c.width=c.height=OUT;const k=OUT/V;
-        const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,OUT,OUT);
+        const c=document.createElement("canvas");c.width=OW;c.height=OH;const k=OW/V;
+        const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,OW,OH);
         ctx.drawImage(img,x*k,y*k,img.naturalWidth*sc()*k,img.naturalHeight*sc()*k);
         data.profile.photo=c.toDataURL("image/jpeg",.88);bg.remove();rerenderPanel();
       } else if(e.target===bg||e.target.dataset.x!==undefined) bg.remove();
