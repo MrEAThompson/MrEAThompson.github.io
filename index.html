@@ -318,7 +318,7 @@ const PROFILE_FIELDS = [
 /* ===================== STATE ===================== */
 let data = clone(DEFAULT);
 let saved = JSON.stringify(data);
-let gh = null, isOwner = false, loadState = "loading";
+let gh = null, isOwner = false, loadState = "loading", loadedSha = null;
 const LS_KEY="eat_site_admin";
 let adminTab = "profile", openItem = null, pubFilter = "all", pubQuery = "";
 
@@ -620,6 +620,11 @@ function guessRepo(){
   const user=h.split(".")[0]; const seg=location.pathname.split("/").filter(Boolean)[0];
   return user+"/"+(seg&&!seg.includes(".")?seg:h);
 }
+function fromB64(b){const bin=atob(b.replace(/\s/g,""));const bytes=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);return new TextDecoder().decode(bytes)}
+async function loadFromRepo(){
+  const f=await ghApi("/contents/content.json?ref="+encodeURIComponent(gh.branch)+"&t="+Date.now(),{cache:"no-store"});
+  data=normalize(JSON.parse(fromB64(f.content))); saved=JSON.stringify(data); loadedSha=f.sha;
+}
 async function doLogin(e){
   e.preventDefault();
   const m=$("#lgMsg"); m.textContent="Checking…"; m.className="status dirty";
@@ -628,18 +633,25 @@ async function doLogin(e){
     const info=await ghApi("");
     if(!(info.permissions&&info.permissions.push)) throw new Error("This token can't write to that repository.");
     try{localStorage.setItem(LS_KEY,JSON.stringify(gh))}catch(_){}
+    try{await loadFromRepo()}catch(_){}
     isOwner=true; render();
   }catch(err){gh=null;m.textContent=err.status===404?"Repository not found, or the token can't see it.":err.status===401?"That token isn't valid.":err.message;m.className="status err"}
 }
-async function save(){
+async function save(force){
   const btn=$("#save");btn.disabled=true;setStatus("Saving…","dirty");
   try{
-    const json=JSON.stringify(data,null,1);
     let sha;
-    try{sha=(await ghApi("/contents/content.json?ref="+encodeURIComponent(gh.branch))).sha}catch(err){if(err.status!==404)throw err}
-    await ghApi("/contents/content.json",{method:"PUT",body:JSON.stringify({message:"Update site content",content:b64(json),branch:gh.branch,...(sha?{sha}:{})})});
-    saved=JSON.stringify(data);setStatus("Saved — live on the site in about a minute","ok");
-  }catch(err){setStatus("Save failed: "+(err.status===401?"token expired or invalid — sign out and in again":err.message),"err")}
+    try{sha=(await ghApi("/contents/content.json?ref="+encodeURIComponent(gh.branch)+"&t="+Date.now(),{cache:"no-store"})).sha}catch(err){if(err.status!==404)throw err}
+    if(!force && loadedSha && sha && sha!==loadedSha){
+      btn.disabled=false; setStatus("The site was changed somewhere else since you opened the editor","err");
+      confirmBox("Your site was saved from another tab or device after this editor opened. Saving now would overwrite those newer changes. Overwrite anyway? (Choose Cancel, then reload this page to get the latest version.)",()=>save(true));
+      return;
+    }
+    const json=JSON.stringify(data,null,1);
+    const res=await ghApi("/contents/content.json",{method:"PUT",body:JSON.stringify({message:"Update site content",content:b64(json),branch:gh.branch,...(sha?{sha}:{})})});
+    loadedSha=res.content&&res.content.sha; saved=JSON.stringify(data);
+    setStatus("Saved — the public site updates in 1–2 minutes","ok");
+  }catch(err){setStatus("Save failed: "+(err.status===401?"token expired or invalid — sign out and in again":err.status===409?"the site changed meanwhile — reload this page and try again":err.message),"err")}
   btn.disabled=false;
 }
 function normalize(d){
@@ -654,10 +666,14 @@ render();
 window.addEventListener("beforeunload",e=>{if(isOwner&&dirty()){e.preventDefault();e.returnValue=""}});
 (async()=>{
   try{const g=JSON.parse(localStorage.getItem(LS_KEY)||"null");if(g&&g.token&&g.repo){gh=g;isOwner=true}}catch(_){}
-  try{
-    const r=await fetch("content.json?v="+Date.now(),{cache:"no-store"});
-    if(r.ok){data=normalize(await r.json());saved=JSON.stringify(data)}
-  }catch(_){}
+  let ok=false;
+  if(gh){ try{await loadFromRepo(); ok=true}catch(_){} }
+  if(!ok){
+    try{
+      const r=await fetch("content.json?v="+Date.now(),{cache:"no-store"});
+      if(r.ok){data=normalize(await r.json());saved=JSON.stringify(data)}
+    }catch(_){}
+  }
   loadState="ready";
   render();
 })();
