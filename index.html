@@ -230,7 +230,7 @@ label.f{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin
     radial-gradient(ellipse at 85% 10%,rgba(255,255,255,.14),transparent 55%),
     repeating-linear-gradient(135deg,rgba(255,255,255,.075) 0 38px,transparent 38px 92px),
     linear-gradient(180deg,#0f5d8c 0%,#0a4a72 100%)}
-.banner .net{position:absolute;right:0;top:0;height:100%;width:62%;opacity:.55;pointer-events:none}
+.banner .net{position:absolute;right:0;top:0;height:100%;width:68%;opacity:.9;pointer-events:none}
 .banner-in{position:relative;display:flex;align-items:center;min-height:190px;padding-top:24px;padding-bottom:24px}
 .logo{display:flex;align-items:center;gap:18px;color:#fff;text-decoration:none}
 .logo:hover{color:#fff}
@@ -327,7 +327,7 @@ svg.chart g.mark:hover .bar{opacity:.8}
   .live{flex-wrap:nowrap;white-space:nowrap;overflow:hidden;gap:6px;font-size:.78rem}
   .live-r{display:none}
   /* compact banner */
-  .banner .net{display:none}
+  .banner .net{display:block;width:100%;opacity:.28}
   .banner-in{min-height:0;padding-top:16px;padding-bottom:16px}
   .logo{gap:12px}.logo svg{width:46px;height:46px}
   .bn{font-size:1.45rem}
@@ -503,22 +503,75 @@ main.home{padding:0 0 50px}
 </head>
 <body>
 
-<div class="topbar"><div class="wrap">
-  <div class="live"><span class="pulse"></span><b>Live</b><span class="sep">|</span><span id="lvLoc">Fargo, ND</span><span class="sep">·</span><span id="lvClock">—</span><span class="sep">·</span><span id="lvWx">loading weather…</span></div>
-  <div class="live-r"><span id="lvUpd"></span><span class="status-pill" id="lvStatus"></span></div>
-</div></div>
+
 <div class="shell">
 <header class="banner">
-  <svg class="net" viewBox="0 0 700 200" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
-    <g fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.5">
-      <path id="r1" d="M40 160 C160 120 220 60 340 70 S540 140 690 40"/>
-      <path id="r2" d="M120 30 C220 80 300 150 430 140 S600 70 690 150" stroke-dasharray="4 6"/>
-      <path id="r3" d="M260 190 C320 120 420 40 560 30"/>
+  <svg class="net" viewBox="0 0 760 200" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="fadeL" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".25" stop-color="#fff" stop-opacity="1"/></linearGradient>
+      <mask id="fadeM"><rect width="760" height="200" fill="url(#fadeL)"/></mask>
+      <g id="truck"><rect x="0" y="-24" width="54" height="20" rx="1.5" fill="rgba(255,255,255,.75)"/><rect x="4" y="-21" width="46" height="3" fill="#e9bf62" opacity=".9"/><path d="M56 -4 V-19 H66 L73 -11 V-4 Z" fill="rgba(255,255,255,.85)"/><path d="M63 -17 H66 L71 -11 H63 Z" fill="#0d4c74"/><circle cx="10" cy="-2" r="4" fill="#0a3c5e" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/><circle cx="44" cy="-2" r="4" fill="#0a3c5e" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/><circle cx="66" cy="-2" r="4" fill="#0a3c5e" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/></g>
+      <g id="plane"><path d="M0 0 L34 -2 Q42 -2 44 0 Q42 2 34 2 Z" fill="rgba(255,255,255,.85)"/><path d="M18 -1 L10 -12 L15 -12 L26 -1 Z M18 1 L10 12 L15 12 L26 1 Z M2 -1 L-1 -7 L3 -7 L7 -1 Z" fill="rgba(255,255,255,.75)"/></g>
+    </defs>
+    <g mask="url(#fadeM)">
+      <!-- supply-chain route network -->
+      <g fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.3" stroke-dasharray="3 6">
+        <path id="flow1" d="M150 120 C230 40 380 40 470 110"/>
+        <path id="flow2" d="M300 135 C420 70 560 60 700 85"/>
+      </g>
+      <g fill="#e9bf62"><circle cx="150" cy="120" r="3.5"/><circle cx="470" cy="110" r="3.5"/><circle cx="700" cy="85" r="3.5"/><circle cx="300" cy="135" r="3"/></g>
+      <circle r="3.5" fill="#fff"><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#flow1"/></animateMotion></circle>
+      <circle r="3" fill="#e9bf62"><animateMotion dur="10s" repeatCount="indefinite" begin="-3s"><mpath href="#flow2"/></animateMotion></circle>
+
+      <!-- cargo plane with contrail -->
+      <g><animateTransform attributeName="transform" type="translate" from="60 34" to="820 22" dur="22s" repeatCount="indefinite"/>
+        <line x1="-90" y1="0" x2="-4" y2="0" stroke="rgba(255,255,255,.35)" stroke-width="1.5" stroke-dasharray="6 5"/><use href="#plane"/></g>
+
+      <!-- warehouse / distribution centre -->
+      <g transform="translate(180 128)" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6">
+        <path d="M0 48 V14 L45 0 L90 14 V48" fill="rgba(255,255,255,.07)"/>
+        <rect x="10" y="26" width="18" height="22"/><rect x="36" y="26" width="18" height="22"/><rect x="62" y="26" width="18" height="22"/>
+        <path d="M10 33 H28 M10 40 H28 M36 33 H54 M36 40 H54 M62 33 H80 M62 40 H80" stroke-width="1"/>
+      </g>
+      <!-- stacked containers in yard -->
+      <g transform="translate(282 152)" stroke="rgba(0,0,0,.15)" stroke-width=".8">
+        <rect x="0" y="0" width="26" height="12" fill="rgba(233,191,98,.75)"/><rect x="27" y="0" width="26" height="12" fill="rgba(255,255,255,.55)"/>
+        <rect x="13" y="-13" width="26" height="12" fill="rgba(255,255,255,.4)"/><rect x="0" y="13" width="26" height="11" fill="rgba(255,255,255,.35)"/><rect x="27" y="13" width="26" height="11" fill="rgba(233,191,98,.5)"/>
+      </g>
+
+      <!-- highway with moving truck -->
+      <rect x="0" y="178" width="440" height="22" fill="rgba(0,0,0,.18)"/>
+      <line x1="0" y1="189" x2="440" y2="189" stroke="rgba(255,255,255,.55)" stroke-width="1.5" stroke-dasharray="10 9"><animate attributeName="stroke-dashoffset" from="0" to="-38" dur="1s" repeatCount="indefinite"/></line>
+      <g><animateTransform attributeName="transform" type="translate" values="-90 186;450 186" dur="12s" repeatCount="indefinite"/><use href="#truck"/></g>
+
+      <!-- quay and water -->
+      <rect x="440" y="166" width="320" height="34" fill="rgba(255,255,255,.06)"/>
+      <path d="M450 178 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 M450 190 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.2"/>
+      <rect x="660" y="150" width="100" height="50" fill="rgba(0,0,0,.18)"/>
+
+      <!-- container ship -->
+      <g><animateTransform attributeName="transform" type="translate" values="0 0;0 2;0 0" dur="4s" repeatCount="indefinite"/>
+        <path d="M450 150 H650 L632 172 H466 Z" fill="rgba(255,255,255,.55)"/>
+        <rect x="450" y="150" width="200" height="4" fill="#e9bf62" opacity=".8"/>
+        <g stroke="rgba(10,40,70,.35)" stroke-width=".8">
+          <rect x="468" y="138" width="22" height="12" fill="rgba(233,191,98,.85)"/><rect x="491" y="138" width="22" height="12" fill="rgba(255,255,255,.75)"/><rect x="514" y="138" width="22" height="12" fill="rgba(31,95,143,.9)"/><rect x="537" y="138" width="22" height="12" fill="rgba(233,191,98,.85)"/><rect x="560" y="138" width="22" height="12" fill="rgba(255,255,255,.75)"/>
+          <rect x="479" y="126" width="22" height="12" fill="rgba(255,255,255,.6)"/><rect x="502" y="126" width="22" height="12" fill="rgba(233,191,98,.7)"/><rect x="525" y="126" width="22" height="12" fill="rgba(255,255,255,.6)"/><rect x="548" y="126" width="22" height="12" fill="rgba(31,95,143,.85)"/>
+        </g>
+        <path d="M596 150 V122 H618 V150 Z" fill="rgba(255,255,255,.8)"/><rect x="600" y="127" width="14" height="4" fill="#0d4c74"/><rect x="605" y="112" width="4" height="10" fill="rgba(255,255,255,.7)"/>
+      </g>
+
+      <!-- ship-to-shore gantry crane -->
+      <g fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2.2" stroke-linecap="round">
+        <path d="M688 150 L694 72 M724 150 L718 72 M690 112 H722 M694 72 H718"/>
+        <path d="M560 66 H748" stroke-width="3"/>
+        <path d="M706 72 L706 46 M706 46 L586 66 M706 46 L748 66" stroke-width="1.4"/>
+        <g><animateTransform attributeName="transform" type="translate" values="0 0;-60 0;-60 0;0 0;0 0" keyTimes="0;.35;.5;.85;1" dur="9s" repeatCount="indefinite"/>
+          <rect x="612" y="63" width="14" height="6" fill="rgba(255,255,255,.85)" stroke="none"/>
+          <line x1="619" y1="69" x2="619" y2="102" stroke-width="1"/>
+          <rect x="608" y="102" width="22" height="9" fill="rgba(233,191,98,.9)" stroke="rgba(10,40,70,.35)" stroke-width=".8"/>
+        </g>
+      </g>
     </g>
-    <g fill="#e9bf62"><circle cx="340" cy="70" r="4"/><circle cx="430" cy="140" r="4"/><circle cx="560" cy="30" r="4"/><circle cx="40" cy="160" r="3"/><circle cx="690" cy="150" r="3"/></g>
-    <circle r="5" fill="#fff"><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#r1"/></animateMotion></circle>
-    <circle r="4" fill="#e9bf62"><animateMotion dur="12s" repeatCount="indefinite" begin="-4s"><mpath href="#r2"/></animateMotion></circle>
-    <circle r="4" fill="#fff"><animateMotion dur="7s" repeatCount="indefinite" begin="-2s"><mpath href="#r3"/></animateMotion></circle>
   </svg>
   <div class="wrap banner-in">
     <a class="logo" href="#home">
@@ -736,9 +789,6 @@ function render(){
   $("#footNav").innerHTML=PAGES.map(([k,l])=>`<a href="#${k}">${l}</a>`).join("");
   $("#copy").textContent="© "+new Date().getFullYear()+" "+(p.name||"");
   $("#brandName").textContent=p.name||"";
-  $("#lvStatus").textContent=p.status||""; $("#lvStatus").style.display=p.status?"":"none";
-  const loc=String(p.location||"").replace(/,\s*USA$/,"").split(",");
-  $("#lvLoc").innerHTML=esc(loc[0])+(loc.length>1?`<span class="d-only">,${esc(loc.slice(1).join(","))}</span>`:"");
   const tk=data.news.map(n=>`<span><b>${esc(n.date)}</b>${esc(n.text)}</span>`).join("");
   const trk=$("#ticker"); trk.innerHTML=tk+tk;
   requestAnimationFrame(()=>{trk.style.animationDuration=Math.max(40,(trk.scrollWidth/2)/28)+"s"});
@@ -983,7 +1033,7 @@ async function loadCitations(){
   } else live.state="error";
   const r=route(); if(r==="home"||r==="publications") render();
 }
-function startLive(){tickClock();setInterval(tickClock,15000);loadWeather();setInterval(loadWeather,15*60*1000);loadUpdated();loadCitations()}
+function startLive(){loadCitations()}
 function entry(t,s,d,details,meta){
   const li=lines(details);
   return `<div class="entry"><div><div class="t">${esc(t)}</div>${s?`<div class="s">${esc(s)}</div>`:""}</div><div class="d">${esc(d)}</div>${meta?`<div class="meta">${meta}</div>`:""}${li.length?`<ul>${li.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</div>`;
