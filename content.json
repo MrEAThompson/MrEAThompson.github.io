@@ -606,7 +606,19 @@
    "album": ""
   }
  ],
- "resources": [],
+ "resources": [
+  {
+   "type": "poster",
+   "date": "January 2025",
+   "title": "Impact of Rail Freight Transportation on Port Competition in West Africa",
+   "file": "files/mwk8v1hh-new-poster-16-9.pdf",
+   "fileSize": 771005,
+   "link": "",
+   "description": "",
+   "body": "",
+   "id": "mwk6mj6c"
+  }
+ ],
  "skills": [
   {
    "category": "Quantitative Methods",
