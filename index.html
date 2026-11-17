@@ -377,6 +377,36 @@ main.home{padding:0 0 50px}
 }
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .about .portrait{margin-top:2px}
+
+/* ===== Gallery ===== */
+.gal{columns:3 280px;column-gap:16px}
+.gi{break-inside:avoid;margin:0 0 16px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:zoom-in;transition:transform .2s,box-shadow .2s}
+.gi:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(21,41,63,.14)}
+.gi img{display:block;width:100%;height:auto;background:#eee}
+.gi figcaption{padding:10px 12px;font-size:.9rem;line-height:1.35}
+.gi figcaption b{display:block;color:var(--navy-2);font-weight:600}
+.gi figcaption span{color:var(--muted);font-size:.82rem}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,14,22,.94);display:flex;align-items:center;justify-content:center;padding:50px 70px}
+.lb figure{margin:0;max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center}
+.lb img{max-width:100%;max-height:calc(100vh - 150px);object-fit:contain;border-radius:4px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb figcaption{color:#e6ecf4;margin-top:12px;text-align:center;font-size:.98rem}
+.lb figcaption span{color:#9fb1c6;margin-left:6px}
+.lb button{position:absolute;background:rgba(255,255,255,.1);color:#fff;border:none;cursor:pointer;border-radius:50%;width:48px;height:48px;font-size:28px;line-height:1}
+.lb button:hover{background:rgba(255,255,255,.22)}
+.lb-x{top:14px;right:14px;font-size:20px!important}
+.lb-p{left:14px;top:50%;transform:translateY(-50%)}
+.lb-n{right:14px;top:50%;transform:translateY(-50%)}
+.lb-c{position:absolute;top:24px;left:24px;color:#9fb1c6;font-size:.85rem}
+.gthumb{width:44px;height:44px;object-fit:cover;border-radius:4px;margin-right:10px;flex-shrink:0}
+.item-head{justify-content:flex-start}.item-head .ttl{flex:1}
+@media (max-width:820px){
+  .gal{columns:2 150px;column-gap:10px}.gi{margin-bottom:10px}
+  .gi figcaption{padding:7px 9px;font-size:.8rem}
+  .lb{padding:56px 8px 70px}
+  .lb-p,.lb-n{top:auto;bottom:12px;transform:none}
+  .lb-p{left:calc(50% - 60px)}.lb-n{right:calc(50% - 60px)}
+  .tabbar a{font-size:.62rem}
+}
 </style>
 </head>
 <body>
@@ -532,6 +562,7 @@ const DEFAULT = {
     {org:"Institute of Industrial & Systems Engineers (IISE)",role:"Member",dates:"2026 – Present"},
     {org:"Transportation Research Forum (TRF)",role:"Member",dates:"2025 – Present"}
   ],
+  gallery:[],
   skills:[
     {category:"Quantitative Methods",items:"Fuzzy AHP, Fuzzy Delphi, FCB-FCM, Fuzzy TOPSIS, BWM, CRITIC, MCDM, Econometrics, Quantile Regression, IV/2SLS, Log-Linear Modeling, GAM, LASSO"},
     {category:"Programming & Statistical Software",items:"R (ggplot2, tidyverse, lavaan), Python, SPSS, Stata, SuperDecision, AnyLoc, Fuzzy Mind Mapping"},
@@ -554,6 +585,7 @@ const SCHEMA = {
   honors:{label:"Honors & Service",title:i=>i.title,fields:[["title","Title"],["org","Organization"],["dates","Dates"],["note","Note"]],blank:{title:"",org:"",dates:"",note:""}},
   certifications:{label:"Certifications",title:i=>i.name,fields:[["name","Certification"],["issuer","Issuer"],["date","Date"]],blank:{name:"",issuer:"",date:""}},
   memberships:{label:"Memberships",title:i=>i.org,fields:[["org","Organization"],["role","Role"],["dates","Dates"]],blank:{org:"",role:"",dates:""}},
+  gallery:{label:"Gallery",title:i=>i.caption||"(no caption)",fields:[["caption","Caption"],["date","Date or event (optional)"],["album","Album (optional, e.g. Conferences, Fieldwork)"]],blank:{}},
   skills:{label:"Skills",title:i=>i.category,fields:[["category","Category"],["items","Items (comma-separated)","textarea"]],blank:{category:"",items:""}}
 };
 const PROFILE_FIELDS = [
@@ -579,9 +611,9 @@ function dirty(){return JSON.stringify(data)!==saved}
 const $=s=>document.querySelector(s);
 
 /* ===================== ROUTING ===================== */
-const PAGES=[["home","Home"],["research","Research"],["publications","Publications"],["teaching","Teaching"],["contact","Contact"]];
+const PAGES=[["home","Home"],["research","Research"],["publications","Publications"],["teaching","Teaching"],["gallery","Gallery"],["contact","Contact"]];
 function route(){return (location.hash||"#home").slice(1)||"home"}
-const TAB_ICONS={"home": "<path d=\"M4 11l8-7 8 7v9h-5v-6H9v6H4z\"/>", "research": "<circle cx=\"10\" cy=\"10\" r=\"6\"/><path d=\"M15 15l5 5\"/>", "publications": "<path d=\"M6 3h9l4 4v14H6z\"/><path d=\"M9 11h7M9 15h7\"/>", "teaching": "<path d=\"M2 9l10-5 10 5-10 5z\"/><path d=\"M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5\"/>", "contact": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/>"};
+const TAB_ICONS={"gallery":"<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><circle cx=\"9\" cy=\"10\" r=\"2\"/><path d=\"M21 17l-5-5-8 7\"/>","home": "<path d=\"M4 11l8-7 8 7v9h-5v-6H9v6H4z\"/>", "research": "<circle cx=\"10\" cy=\"10\" r=\"6\"/><path d=\"M15 15l5 5\"/>", "publications": "<path d=\"M6 3h9l4 4v14H6z\"/><path d=\"M9 11h7M9 15h7\"/>", "teaching": "<path d=\"M2 9l10-5 10 5-10 5z\"/><path d=\"M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5\"/>", "contact": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/>"};
 function tabsHtml(cur){return PAGES.map(([k,l])=>`<a href="#${k}" class="${cur===k?"on":""}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${TAB_ICONS[k]||""}</svg><span>${l}</span></a>`).join("")}
 function navHtml(cur){return PAGES.map(([k,l])=>`<a href="#${k}" class="${cur===k?"active":""}">${l}</a>`).join("")}
 
@@ -600,10 +632,11 @@ function render(){
   const trk=$("#ticker"); trk.innerHTML=tk+tk;
   requestAnimationFrame(()=>{trk.style.animationDuration=Math.max(40,(trk.scrollWidth/2)/28)+"s"});
   const app=$("#app");
-  const views={home:viewHome,research:viewResearch,publications:viewPubs,teaching:viewTeaching,contact:viewContact,admin:viewAdmin};
+  const views={home:viewHome,research:viewResearch,publications:viewPubs,teaching:viewTeaching,gallery:viewGallery,contact:viewContact,admin:viewAdmin};
   app.innerHTML=(views[r]||viewHome)();
   if(r==="publications") bindPubs();
   if(r==="home") countUp();
+  if(r==="gallery") bindGallery();
   if(r==="admin") bindAdmin();
 }
 window.addEventListener("hashchange",()=>{render();window.scrollTo(0,0)});
@@ -928,6 +961,41 @@ function viewCV(){
     <div class="section"><div class="section-head"><h2>References</h2></div><p>Available upon request.</p></div>
   </div></main>`;
 }
+let galAlbum="all";
+const localPreview={};
+function imgSrc(p){return localPreview[p]||p}
+function galItems(){return (data.gallery||[]).filter(g=>g&&g.src&&(galAlbum==="all"||(g.album||"")===galAlbum))}
+function viewGallery(){
+  const all=(data.gallery||[]).filter(g=>g&&g.src);
+  const albums=[...new Set(all.map(g=>(g.album||"").trim()).filter(Boolean))];
+  if(galAlbum!=="all"&&!albums.includes(galAlbum)) galAlbum="all";
+  const items=galItems();
+  return pageHead("Gallery","Moments from conferences, fieldwork, teaching and community.")+
+  `<main><div class="wrap">
+    ${albums.length?`<div class="pubtools">${[["all","All"],...albums.map(a=>[a,a])].map(([k,l])=>`<button class="chip ${galAlbum===k?"on":""}" data-alb="${esc(k)}">${esc(l)} (${k==="all"?all.length:all.filter(g=>g.album===k).length})</button>`).join("")}</div>`:""}
+    ${items.length?`<div class="gal">${items.map((g,i)=>`<figure class="gi" data-gi="${i}"><img loading="lazy" src="${esc(imgSrc(g.thumb||g.src))}" alt="${esc(g.caption||"Photo")}">${g.caption||g.date?`<figcaption><b>${esc(g.caption||"")}</b>${g.date?`<span>${esc(g.date)}</span>`:""}</figcaption>`:""}</figure>`).join("")}</div>`
+      :`<div class="notice" style="text-align:center;padding:40px">📷 Photos coming soon.</div>`}
+  </div></main>`;
+}
+function bindGallery(){
+  document.querySelectorAll("[data-alb]").forEach(b=>b.onclick=()=>{galAlbum=b.dataset.alb;render()});
+  document.querySelectorAll("[data-gi]").forEach(f=>f.onclick=()=>openLightbox(+f.dataset.gi));
+}
+function openLightbox(i){
+  const items=galItems(); if(!items.length) return;
+  const lb=document.createElement("div");lb.className="lb";
+  lb.innerHTML=`<button class="lb-x" aria-label="Close">✕</button><button class="lb-p" aria-label="Previous">‹</button><figure><img alt=""><figcaption></figcaption></figure><button class="lb-n" aria-label="Next">›</button><div class="lb-c"></div>`;
+  document.body.appendChild(lb);document.body.style.overflow="hidden";
+  const im=lb.querySelector("img"),cap=lb.querySelector("figcaption"),cnt=lb.querySelector(".lb-c");
+  const show=k=>{i=(k+items.length)%items.length;const g=items[i];im.src=imgSrc(g.src);im.alt=g.caption||"Photo";cap.innerHTML=(g.caption?`<b>${esc(g.caption)}</b>`:"")+(g.date?` <span>${esc(g.date)}</span>`:"");cnt.textContent=`${i+1} / ${items.length}`};
+  const close=()=>{lb.remove();document.body.style.overflow="";document.removeEventListener("keydown",key)};
+  const key=e=>{if(e.key==="Escape")close();else if(e.key==="ArrowRight")show(i+1);else if(e.key==="ArrowLeft")show(i-1)};
+  document.addEventListener("keydown",key);
+  lb.onclick=e=>{if(e.target.closest(".lb-n"))show(i+1);else if(e.target.closest(".lb-p"))show(i-1);else if(e.target.closest(".lb-x")||e.target===lb)close()};
+  let tx=null;lb.addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener("touchend",e=>{if(tx===null)return;const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show(d<0?i+1:i-1);tx=null});
+  show(i);
+}
 function viewContact(){
   const p=data.profile;
   return pageHead("Contact","I welcome inquiries about research collaboration, speaking, and freight and supply chain projects.")+
@@ -985,9 +1053,10 @@ function panelHtml(){
       <div id="jmsg" style="margin-top:8px;font-size:.9rem"></div>`;
   }
   const S=SCHEMA[adminTab], arr=data[adminTab];
-  return `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">${esc(S.label)}</h2><button class="btn" id="addItem">+ Add new</button></div>
-    <p style="color:var(--muted);font-size:.9rem">Click an entry to edit it. Use ↑ ↓ to change the order shown on the site.</p>
-    ${arr.map((it,i)=>`<div class="item"><div class="item-head" data-open="${i}"><span class="ttl">${esc(S.title(it)||"(untitled)")}</span>
+  const isGal=adminTab==="gallery";
+  return `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">${esc(S.label)}</h2>${isGal?`<label class="btn" style="cursor:pointer">+ Upload photos<input type="file" id="galIn" accept="image/*" multiple hidden></label>`:`<button class="btn" id="addItem">+ Add new</button>`}</div>
+    ${isGal?`<p style="color:var(--muted);font-size:.9rem">Choose one or many photos — they are resized and uploaded automatically. Then click a photo to add a caption, and press <b>Save & publish</b>. <span id="galMsg" class="status"></span></p>`:`<p style="color:var(--muted);font-size:.9rem">Click an entry to edit it. Use ↑ ↓ to change the order shown on the site.</p>`}
+    ${arr.map((it,i)=>`<div class="item"><div class="item-head" data-open="${i}">${isGal&&it.thumb?`<img class="gthumb" src="${esc(imgSrc(it.thumb))}" alt="">`:""}<span class="ttl">${esc(S.title(it)||"(untitled)")}</span>
       <span class="acts"><button class="btn ghost sm" data-up="${i}" ${i===0?"disabled":""}>↑</button><button class="btn ghost sm" data-down="${i}" ${i===arr.length-1?"disabled":""}>↓</button><button class="btn danger sm" data-del="${i}">Delete</button></span></div>
       ${openItem===i?`<div class="item-body"><div class="row2">${S.fields.map(f=>fieldHtml(adminTab+"."+i,f,it[f[0]])).join("")}</div></div>`:""}</div>`).join("")||"<p>No entries yet.</p>"}`;
 }
@@ -1002,7 +1071,7 @@ function bindAdmin(){
   const panel=$("#panel"); panel.innerHTML=panelHtml(); refreshStatus();
   document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{adminTab=b.dataset.tab;openItem=null;render()});
   $("#save").onclick=save;
-  $("#discard").onclick=()=>{data=JSON.parse(saved);render()};
+  $("#discard").onclick=()=>{data=JSON.parse(saved);pendingDeletes=[];render()};
   panel.oninput=e=>{
     const t=e.target; if(!t.dataset||!t.dataset.path) return;
     const [sec,idx]=t.dataset.path.split(".");
@@ -1017,7 +1086,7 @@ function bindAdmin(){
     if(b.id==="addItem"){arr.unshift(clone(SCHEMA[adminTab].blank));openItem=0;rerenderPanel();return}
     if(b.dataset.up){e.stopPropagation();const i=+b.dataset.up;[arr[i-1],arr[i]]=[arr[i],arr[i-1]];openItem=null;rerenderPanel();return}
     if(b.dataset.down){e.stopPropagation();const i=+b.dataset.down;[arr[i+1],arr[i]]=[arr[i],arr[i+1]];openItem=null;rerenderPanel();return}
-    if(b.dataset.del){e.stopPropagation();confirmBox("Delete this entry?",()=>{arr.splice(+b.dataset.del,1);openItem=null;rerenderPanel()});return}
+    if(b.dataset.del){e.stopPropagation();confirmBox(adminTab==="gallery"?"Remove this photo from the gallery?":"Delete this entry?",()=>{const [gone]=arr.splice(+b.dataset.del,1);if(adminTab==="gallery"&&gone){[gone.src,gone.thumb].filter(Boolean).forEach(p=>pendingDeletes.push(p))}openItem=null;rerenderPanel()});return}
     if(b.dataset.open!==undefined && b.tagName!=="BUTTON"){const i=+b.dataset.open;openItem=openItem===i?null:i;rerenderPanel();return}
     if(b.id==="photoAdj"){openCropper(data.profile.photo);return}
     if(b.id==="photoDel"){data.profile.photo="";rerenderPanel();return}
@@ -1031,7 +1100,31 @@ function rerenderPanel(){$("#panel").innerHTML=panelHtml();refreshStatus();
   document.querySelectorAll("[data-tab]").forEach(b=>{const k=b.dataset.tab;const c=b.querySelector(".count");if(c&&data[k])c.textContent=data[k].length});
   bindPhotoInput();
 }
-function bindPhotoInput(){const pi=$("#photoIn"); if(pi) pi.onchange=e=>{const f=e.target.files[0];e.target.value="";if(f)openCropper(URL.createObjectURL(f))}}
+function bindGalInput(){const g=$("#galIn"); if(g) g.onchange=e=>{const fs=[...e.target.files];e.target.value="";if(fs.length)uploadPhotos(fs)}}
+function resizeTo(file,max){return new Promise((res,rej)=>{const u=URL.createObjectURL(file);const img=new Image();img.onload=()=>{const k=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));const c=document.createElement("canvas");c.width=Math.round(img.naturalWidth*k);c.height=Math.round(img.naturalHeight*k);const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL("image/jpeg",.85))};img.onerror=()=>{URL.revokeObjectURL(u);rej(new Error("unsupported"))};img.src=u})}
+async function putFile(path,dataUrl,msg){return ghApi("/contents/"+path,{method:"PUT",body:JSON.stringify({message:msg,content:dataUrl.split(",")[1],branch:gh.branch})})}
+let uploading=false;
+async function uploadPhotos(files){
+  if(uploading) return; uploading=true; let ok=0, bad=[];
+  const msg=t=>{const m=$("#galMsg");if(m){m.textContent=t;m.className="status dirty"}};
+  for(let n=0;n<files.length;n++){
+    const f=files[n]; msg(`Uploading ${n+1} of ${files.length}…`);
+    try{
+      const full=await resizeTo(f,1800), th=await resizeTo(f,640);
+      const id=Date.now().toString(36)+"-"+(f.name.replace(/\.[^.]+$/,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||"photo");
+      const src=`gallery/${id}.jpg`, thumb=`gallery/thumbs/${id}.jpg`;
+      await putFile(src,full,"Add gallery photo"); await putFile(thumb,th,"Add gallery thumbnail");
+      localPreview[src]=full; localPreview[thumb]=th;
+      data.gallery.unshift({src,thumb,caption:"",date:"",album:""}); ok++;
+      if(adminTab==="gallery") rerenderPanel();
+    }catch(err){bad.push(f.name+(err.message==="unsupported"?" (format not supported — try JPG or PNG)":` (${err.message})`))}
+  }
+  uploading=false; if(adminTab==="gallery") rerenderPanel();
+  const m=$("#galMsg"); if(m){m.textContent=(ok?`${ok} photo${ok>1?"s":""} uploaded — add captions, then click Save & publish.`:"")+(bad.length?` Failed: ${bad.join(", ")}`:"");m.className="status "+(bad.length?"err":"ok")}
+  refreshStatus();
+}
+let pendingDeletes=[];
+function bindPhotoInput(){bindGalInput();const pi=$("#photoIn"); if(pi) pi.onchange=e=>{const f=e.target.files[0];e.target.value="";if(f)openCropper(URL.createObjectURL(f))}}
 function openCropper(src){
   const img=new Image();
   img.onload=()=>{
@@ -1121,6 +1214,8 @@ async function save(force){
     const json=JSON.stringify(data,null,1);
     const res=await ghApi("/contents/content.json",{method:"PUT",body:JSON.stringify({message:"Update site content",content:b64(json),branch:gh.branch,...(sha?{sha}:{})})});
     loadedSha=res.content&&res.content.sha; saved=JSON.stringify(data);
+    const still=new Set((data.gallery||[]).flatMap(g=>[g.src,g.thumb]));
+    for(const p of pendingDeletes.splice(0)){ if(still.has(p)) continue; try{const f=await ghApi("/contents/"+p+"?ref="+encodeURIComponent(gh.branch));await ghApi("/contents/"+p,{method:"DELETE",body:JSON.stringify({message:"Remove gallery photo",sha:f.sha,branch:gh.branch})})}catch(_){} }
     setStatus("Saved — the public site updates in 1–2 minutes","ok");
   }catch(err){setStatus("Save failed: "+(err.status===401?"token expired or invalid — sign out and in again":err.status===409?"the site changed meanwhile — reload this page and try again":err.message),"err")}
   btn.disabled=false;
