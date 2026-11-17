@@ -1087,7 +1087,7 @@ async function ghApi(path,opt={}){
   return j;
 }
 function guessRepo(){
-  const h=location.hostname; if(!h.endsWith(".github.io")) return "";
+  const h=location.hostname; if(!h.endsWith(".github.io")) return /mreathompson\.com$/i.test(h)?"MrEAThompson/MrEAThompson.github.io":"";
   const user=h.split(".")[0]; const seg=location.pathname.split("/").filter(Boolean)[0];
   return user+"/"+(seg&&!seg.includes(".")?seg:h);
 }
