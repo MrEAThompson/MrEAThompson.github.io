@@ -375,6 +375,8 @@ main.home{padding:0 0 50px}
   .rest{padding:24px 16px 0}
   .sthumb{width:84px;height:84px}.sthumb svg{width:46px;height:46px}.sthumb .spark svg{width:70px;height:42px}
 }
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.about .portrait{margin-top:2px}
 </style>
 </head>
 <body>
@@ -671,9 +673,7 @@ function viewHome(){
   const L=live.metrics;
   return `<main class="home"><div class="wrap home-grid">
     <section class="about">
-      <h1 class="home-name">${esc(p.name)}</h1>
-      <div class="role">${esc(p.role)}${p.affiliation?` · ${esc(p.affiliation)}`:""}</div>
-      <div class="rule"></div>
+      <h1 class="sr-only">${esc(p.name)}</h1>
       ${portraitHtml()}
       <p class="lede">${esc(p.tagline)}</p>
       ${paras.map(x=>`<p>${esc(x)}</p>`).join("")}
